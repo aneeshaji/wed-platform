@@ -508,8 +508,8 @@
 
 .medallion {
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: 420px;
+  height: 420px;
   display: grid;
   place-items: center;
   animation: float 7s ease-in-out infinite;
@@ -2180,6 +2180,11 @@
   }
 
   .medallion {
+    width: 280px;
+    height: 280px;
+  }
+
+  .medallion-caricature-frame {
     width: 240px;
     height: 240px;
   }
@@ -2356,8 +2361,8 @@
 /* ---------- Caricatures & Hero Medallion Styling ---------- */
 
 .medallion-caricature-frame {
-  width: 225px;
-  height: 225px;
+  width: 350px;
+  height: 350px;
   border-radius: 50%;
   overflow: hidden;
   position: relative;
@@ -2365,8 +2370,8 @@
   align-items: center;
   justify-content: center;
   background: radial-gradient(circle at center, rgba(167, 139, 250, 0.25), rgba(10, 8, 22, 0.98));
-  border: 2px solid rgba(251, 191, 36, 0.45);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), inset 0 0 24px rgba(0, 0, 0, 0.8);
+  border: 2.5px solid rgba(251, 191, 36, 0.55);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65), inset 0 0 30px rgba(0, 0, 0, 0.7), 0 0 40px rgba(167, 139, 250, 0.15);
   z-index: 2;
 }
 

@@ -4,7 +4,6 @@ import {
   ArrowUpIcon,
   BedIcon,
   CalendarIcon,
-  CameraIcon,
   CheckIcon,
   ClockIcon,
   CloseIcon,
@@ -105,7 +104,7 @@ const L = {
     share: 'പങ്കിടുക',
     detailsKicker: 'വിവരങ്ങൾ',
     scroll: 'താഴേക്ക് പോകുക',
-    marquee: ['സ്നേഹ & സാരഥ്രാജ്', '13 സെപ്റ്റംബർ 2026', 'ഭാമാ ഓഡിറ്റോറിയം, മയ്യനാദ്', 'ഞങ്ങളുടെ ആഘോഷത്തിൽ പങ്കുചേരൂ'],
+    marquee: ['സ്നേഹ & ശരത്‌രാജ്', '13 സെപ്റ്റംബർ 2026', 'ഭാമാ ഓഡിറ്റോറിയം, മയ്യനാട്', 'ഞങ്ങളുടെ ആഘോഷത്തിൽ പങ്കുചേരൂ'],
     countdownLabel: 'മുഹൂർത്തത്തിലേക്കുള്ള സമയം',
     days: 'ദിവസങ്ങൾ',
     hours: 'മണിക്കൂറുകൾ',
@@ -125,7 +124,7 @@ const L = {
     detailsTitle: 'പ്രധാന വിവരങ്ങൾ',
     venueKicker: 'വേദി',
     venueTitle: 'വേദിയും വഴിയും',
-    venueNote: 'മയ്യനാട് അമ്മാച്ചൻമുക്കിൽ സ്ഥിതി ചെയ്യുന്ന ഓഡിറ്റോറിയം. വിശാലമായ പാർക്കിംഗ് സൗകര്യം ലഭ്യമാണ്.',
+    venueNote: 'മയ്യനാട്, അമ്മാച്ചൻമുക്കിൽ സ്ഥിതി ചെയ്യുന്ന ഓഡിറ്റോറിയം. വിശാലമായ പാർക്കിംഗ് സൗകര്യം ലഭ്യമാണ്.',
     mapsOpen: 'ഗൂഗിൾ മാപ്പിൽ കാണുക',
     copied: 'പകർത്തി!',
     copyAddress: 'വിലാസം പകർത്തുക',
@@ -138,7 +137,7 @@ const L = {
     faqTitle: 'ചോദ്യോത്തരം',
     caricaturesKicker: 'ചിത്രരൂപങ്ങൾ',
     caricaturesTitle: 'കരിക്കേച്ചർ ഓർമ്മകൾ',
-    footerDate: '13-09-2026 · ഭാമാ ഓഡിറ്റോറിയം · മയ്യനാദ്',
+    footerDate: '13-09-2026 · ഭാമാ ഓഡിറ്റോറിയം · മയ്യനാട്',
     footerMade: 'സ്നേഹത്തോടെ ഞങ്ങൾ നിർമ്മിച്ചത്.',
     shareMailAria: 'ഇമെയിൽ',
     designedBy: 'രൂപകൽപ്പന',
@@ -148,57 +147,23 @@ const L = {
     closeMenu: 'അടയ്ക്കുക',
     openMenu: 'തുറക്കുക',
     closePhoto: 'ചിത്രം അടയ്ക്കുക',
-    calendarSummary: 'സ്നേഹ & സാരഥ്രാജ് — മുഹൂർത്തം',
-    calendarReceptionSummary: 'സ്നേഹ & സാരഥ്രാജ് — റിസപ്ഷൻ',
-    shareBody: '13-09-2026 11:55, ഭാമാ ഓഡിറ്റോറിയം, മയ്യനാദ്, കൊല്ലം.',
-    shareMailTitle: 'സ്നേഹ & സാരഥ്രാജ് — വിവാഹ ക്ഷണം',
+    calendarSummary: 'സ്നേഹ & ശരത്‌രാജ് — മുഹൂർത്തം',
+    calendarReceptionSummary: 'സ്നേഹ & ശരത്‌രാജ് — റിസപ്ഷൻ',
+    shareBody: '13-09-2026 11:55, ഭാമാ ഓഡിറ്റോറിയം, മയ്യനാട്, കൊല്ലം.',
+    shareMailTitle: 'സ്നേഹ & ശരത്‌രാജ് — വിവാഹ ക്ഷണം',
   },
 }
 
 /* MARKER_X7 */
 const navLinks = [
-  { href: '#caricatures', en: 'Caricatures', ml: 'ചിത്രങ്ങൾ' },
   { href: '#events', en: 'Events', ml: 'ആഘോഷങ്ങൾ' },
   { href: '#story', en: 'Story', ml: 'കഥ' },
-  { href: '#gallery', en: 'Gallery', ml: 'ഗ്യാലറി' },
   { href: '#venue', en: 'Venue', ml: 'വേദി' },
   { href: '#schedule', en: 'Schedule', ml: 'ഷെഡ്യൂൾ' },
   { href: '#travel', en: 'Travel', ml: 'യാത്ര' },
   { href: '#faq', en: 'FAQs', ml: 'ചോദ്യോത്തരം' },
 ]
 
-const caricatures = [
-  {
-    id: 'muhurtham',
-    src: '/images/couple_caricature_hero.png',
-    tag: { en: 'Muhurtham Pose', ml: 'മുഹൂർത്ത ഭംഗി' },
-    title: { en: 'Traditional Blessings', ml: 'പരമ്പരാഗത ഐശ്വര്യം' },
-    desc: {
-      en: 'Dressed in traditional Kerala Kasavu attire with warm smiles and divine wedding blessings.',
-      ml: 'കേരളീയ തനിമയാർന്ന വസ്ത്രധാരണത്തിൽ ഐശ്വര്യപൂർണ്ണമായ ഭാവങ്ങൾ.',
-    },
-  },
-  {
-    id: 'story',
-    src: '/images/couple_caricature_story.png',
-    tag: { en: 'Love Story', ml: 'പ്രണയ കഥ' },
-    title: { en: 'Under the Muthukkuda', ml: 'മുത്തുക്കുടക്കീഴിൽ' },
-    desc: {
-      en: 'Sharing a sweet, playful moment beneath the traditional festive umbrella.',
-      ml: 'മുത്തുക്കുടക്കീഴിൽ പങ്കിടുന്ന അവിസ്മരണീയമായ പ്രണയനിമിഷം.',
-    },
-  },
-  {
-    id: 'reception',
-    src: '/images/couple_caricature_reception.png',
-    tag: { en: 'Reception Glam', ml: 'റിസപ്ഷൻ രാവ്' },
-    title: { en: 'Evening Celebration', ml: 'സന്ധ്യാഘോഷം' },
-    desc: {
-      en: 'A sparkling evening of music, dance, and laughter under floating fairy lights.',
-      ml: 'വർണ്ണാഭമായ സംഗീതവും വെളിച്ചവും നിറഞ്ഞ റിസപ്ഷൻ സന്ധ്യ.',
-    },
-  },
-]
 
 /* ---------------- Content config ---------------- */
 
@@ -212,7 +177,7 @@ const highlights = [
     key: 'venue',
     label: { en: 'Venue', ml: 'വേദി' },
     value: 'Bhama Auditorium',
-    detail: { en: venueAddress, ml: 'മയ്യനാദ്, കൊല്ലം, കേരളം' },
+    detail: { en: venueAddress, ml: 'മയ്യനാട്, കൊല്ലം, കേരളം' },
     icon: MapPinIcon,
   },
   {
@@ -244,7 +209,7 @@ const schedule = [
     title: { en: 'Reception — celebration', ml: 'റിസപ്ഷൻ — ആഘോഷം' },
     note: {
       en: 'An elegant evening of music, joy and togetherness as we celebrate our wedding weekend. Begins at 4:00 PM.',
-      ml: 'സംഗീതവും സന്തോഷവും നിറഞ്ഞ സന്ധ്യ. വൈകുന്നേരം 4 മണിമുതൽ.',
+      ml: 'സംഗീതവും സന്തോഷവും നിറഞ്ഞ ഒരു അവിസ്മരണീയ സന്ധ്യ.',
     },
   },
 ]
@@ -296,50 +261,7 @@ const events = [
   },
 ]
 
-const galleryTiles = [
-  {
-    img: '/images/couple_caricature_hero.png',
-    c1: '#a78bfa',
-    c2: '#6d28d9',
-    caption: { en: 'Traditional Muhurtham', ml: 'പരമ്പരാഗത മുഹൂർത്തം' },
-    tag: { en: 'Ceremony', ml: 'ചടങ്ങ്' },
-  },
-  {
-    img: '/images/couple_caricature_story.png',
-    c1: '#f472b6',
-    c2: '#be185d',
-    caption: { en: 'Under the Muthukkuda', ml: 'മുത്തുക്കുടക്കീഴിൽ' },
-    tag: { en: 'Love Story', ml: 'പ്രണയം' },
-  },
-  {
-    img: '/images/couple_caricature_reception.png',
-    c1: '#fbbf34',
-    c2: '#d97706',
-    caption: { en: 'Evening Reception', ml: 'സന്ധ്യാ റിസപ്ഷൻ' },
-    tag: { en: 'Celebration', ml: 'ആഘോഷം' },
-  },
-  {
-    img: '/images/caricature_savethedate.svg',
-    c1: '#c4b5fd',
-    c2: '#7c3aed',
-    caption: { en: 'Save the Date', ml: 'തീയതി ഓർക്കുക' },
-    tag: { en: 'Invitation', ml: 'ക്ഷണം' },
-  },
-  {
-    img: '/images/caricature_haldi.svg',
-    c1: '#fda4af',
-    c2: '#e11d48',
-    caption: { en: 'Haldi & Blessings', ml: 'മഞ്ഞളണിഞ്ഞ നിമിഷം' },
-    tag: { en: 'Rituals', ml: 'ചടങ്ങുകൾ' },
-  },
-  {
-    img: '/images/caricature_sangeet.svg',
-    c1: '#fcd34d',
-    c2: '#b45309',
-    caption: { en: 'Music & Sangeet', ml: 'സംഗീത രാവ്' },
-    tag: { en: 'Memories', ml: 'ഓർമ്മകൾ' },
-  },
-]
+
 
 const faqs = [
   {
@@ -382,7 +304,7 @@ const travelData = [
     title: { en: 'By road', ml: 'റോഡ് മാർഗം' },
     detail: {
       en: 'The venue sits near Mayyanad on NH66, easy to reach by car.',
-      ml: 'മയ്യനാദിനടുത്ത്, NH66.',
+      ml: 'മയ്യനാട്, NH66 അടുത്ത്.',
     },
   },
   {
@@ -390,7 +312,7 @@ const travelData = [
     title: { en: 'Where to stay', ml: 'താമസം' },
     detail: {
       en: 'Several comfortable stays are available near Mayyanad and the Ashtamudi backwaters.',
-      ml: 'മയ്യനാദ്, അഷ്ടമുടിക്കടുത്ത്.',
+      ml: 'മയ്യനാട്, അഷ്ടമുടിക്കടുത്ത്.',
     },
   },
   {
@@ -736,8 +658,8 @@ function App() {
               <div className="medallion-ring" aria-hidden="true" />
               <div className="medallion-caricature-frame">
                 <img
-                  src="/images/couple_caricature_hero.png"
-                  alt="Sneha & Sarathraj Wedding Caricature"
+                  src="/images/couple_hero.png"
+                  alt="Sneha &amp; Sarathraj Wedding Portrait"
                   className="caricature-hero-img"
                 />
               </div>
@@ -795,35 +717,6 @@ function App() {
           </p>
         </section>
 
-        <section className="section caricatures" id="caricatures">
-          <div className="section-heading" data-reveal>
-            <span className="kicker">
-              <i aria-hidden="true" /> <SparklesIcon size={15} className="kicker-icon" />{' '}
-              {T.caricaturesKicker} <i aria-hidden="true" />
-            </span>
-            <h2>{T.caricaturesTitle}</h2>
-          </div>
-          <div className="caricature-grid" data-reveal>
-            {caricatures.map((c, i) => (
-              <div
-                className="caricature-card"
-                key={c.id}
-                data-reveal
-                style={{ '--d': `${i * 120}ms` }}
-              >
-                <div className="caricature-img-wrap">
-                  <img src={c.src} alt={tr(c.title)} className="caricature-img" />
-                  <span className="caricature-tag">{tr(c.tag)}</span>
-                </div>
-                <div className="caricature-body">
-                  <h3>{tr(c.title)}</h3>
-                  <p>{tr(c.desc)}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
         <section className="section events" id="events">
           <div className="section-heading" data-reveal>
             <span className="kicker">
@@ -878,36 +771,6 @@ function App() {
             <blockquote className="story-quote" data-reveal style={{ '--d': '240ms' }}>
               “{T.storyQuote}”
             </blockquote>
-          </div>
-        </section>
-
-        <section className="section gallery" id="gallery">
-          <div className="section-heading" data-reveal>
-            <span className="kicker">
-              <i aria-hidden="true" /> <CameraIcon size={15} className="kicker-icon" />{' '}
-              {T.galleryKicker} <i aria-hidden="true" />
-            </span>
-            <h2>{T.galleryTitle}</h2>
-          </div>
-          <div className="gallery-grid" data-reveal>
-            {galleryTiles.map((tile, i) => (
-              <button
-                className="gallery-tile gallery-tile--caricature"
-                key={i}
-                type="button"
-                onClick={() => setLightbox(i)}
-                aria-label={`${T.openPhoto} ${tr(tile.caption)}`}
-              >
-                <div
-                  className="gallery-tile-backdrop"
-                  style={{ background: `radial-gradient(circle at center, ${tile.c1}44, #0b0816 85%)` }}
-                />
-                <img src={tile.img} alt={tr(tile.caption)} className="gallery-tile-img" />
-                <span className="gallery-tag">{tr(tile.tag)}</span>
-                <span className="gallery-watermark">S ✦ S</span>
-                <span className="gallery-caption">{tr(tile.caption)}</span>
-              </button>
-            ))}
           </div>
         </section>
 
@@ -1159,41 +1022,7 @@ function App() {
         <ArrowUpIcon size={18} />
       </button>
 
-      {lightbox !== null && (
-        <div
-          className="lightbox"
-          role="dialog"
-          aria-modal="true"
-          aria-label={tr(galleryTiles[lightbox].caption)}
-          onClick={() => setLightbox(null)}
-        >
-          <div
-            className="lightbox-inner lightbox-inner--caricature"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="lightbox-img-frame">
-              <img
-                src={galleryTiles[lightbox].img}
-                alt={tr(galleryTiles[lightbox].caption)}
-                className="lightbox-caricature-img"
-              />
-            </div>
-            <div className="lightbox-overlay">
-              <span className="lightbox-tag">{tr(galleryTiles[lightbox].tag)}</span>
-              <p className="lightbox-caption">{tr(galleryTiles[lightbox].caption)}</p>
-              <span className="lightbox-sub">Sneha &amp; Sarathraj · 13.09.2026</span>
-            </div>
-          </div>
-          <button
-            className="lightbox-close"
-            type="button"
-            onClick={() => setLightbox(null)}
-            aria-label={T.closePhoto}
-          >
-            <CloseIcon size={20} />
-          </button>
-        </div>
-      )}
+
     </div>
   )
 }
