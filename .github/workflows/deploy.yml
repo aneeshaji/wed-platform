@@ -25,27 +25,14 @@ jobs:
       - name: Build Production Dist
         run: npm run build
 
-      - name: Convert OG image SVG to PNG
-        run: |
-          npm install --no-save sharp
-          node -e "
-          const sharp = require('sharp');
-          const fs = require('fs');
-          const svgBuffer = fs.readFileSync('./public/og-image.svg');
-          sharp(svgBuffer)
-            .resize(1200, 630)
-            .png()
-            .toFile('./dist/og-image.png')
-            .then(() => console.log('og-image.png generated'))
-            .catch(e => { console.error(e); process.exit(1); });
-          "
-
       - name: Upload to cPanel via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          port: ${{ secrets.FTP_PORT || 21 }}
+          timeout: 60000
           server-dir: ${{ secrets.FTP_SERVER_DIR || 'sneha-sarath.wed.framezlabs.store/' }}
           local-dir: ./dist/
           dangerous-clean-slate: false
