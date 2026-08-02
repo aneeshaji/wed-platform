@@ -4,97 +4,71 @@
       <stop offset="0" stop-color="#0b0718" />
       <stop offset="1" stop-color="#1a0f33" />
     </linearGradient>
-    <radialGradient id="aur1" cx="0.2" cy="0.15" r="0.7">
-      <stop offset="0" stop-color="#a78bfa" stop-opacity="0.45" />
+    <radialGradient id="aur1" cx="0.15" cy="0.1" r="0.65">
+      <stop offset="0" stop-color="#a78bfa" stop-opacity="0.5" />
       <stop offset="1" stop-color="#a78bfa" stop-opacity="0" />
     </radialGradient>
-    <radialGradient id="aur2" cx="0.85" cy="0.85" r="0.75">
-      <stop offset="0" stop-color="#f472b6" stop-opacity="0.4" />
+    <radialGradient id="aur2" cx="0.88" cy="0.9" r="0.7">
+      <stop offset="0" stop-color="#f472b6" stop-opacity="0.45" />
       <stop offset="1" stop-color="#f472b6" stop-opacity="0" />
     </radialGradient>
-    <radialGradient id="aur3" cx="0.7" cy="0.25" r="0.5">
-      <stop offset="0" stop-color="#fbbf24" stop-opacity="0.22" />
+    <radialGradient id="aur3" cx="0.75" cy="0.2" r="0.45">
+      <stop offset="0" stop-color="#fbbf24" stop-opacity="0.25" />
       <stop offset="1" stop-color="#fbbf24" stop-opacity="0" />
     </radialGradient>
-    <linearGradient id="txt" x1="0" y1="0" x2="1" y2="0">
+    <linearGradient id="nameGrad" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#c4b5fd" />
-      <stop offset="0.5" stop-color="#f9a8d4" />
+      <stop offset="0.4" stop-color="#f9a8d4" />
       <stop offset="1" stop-color="#fcd34d" />
+    </linearGradient>
+    <linearGradient id="borderGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a78bfa" stop-opacity="0.6" />
+      <stop offset="1" stop-color="#f472b6" stop-opacity="0.6" />
     </linearGradient>
   </defs>
 
+  <!-- Background -->
   <rect width="1200" height="630" fill="url(#bg)" />
   <rect width="1200" height="630" fill="url(#aur1)" />
   <rect width="1200" height="630" fill="url(#aur2)" />
   <rect width="1200" height="630" fill="url(#aur3)" />
 
-  <g fill="none" stroke="#c4b5fd" stroke-opacity="0.22" stroke-width="1.5">
-    <circle cx="600" cy="315" r="250" />
-    <circle cx="600" cy="315" r="188" />
-    <circle cx="600" cy="315" r="126" />
-  </g>
+  <!-- Border frame -->
+  <rect x="24" y="24" width="1152" height="582" rx="16" fill="none" stroke="url(#borderGrad)" stroke-width="1.5" />
+  <rect x="34" y="34" width="1132" height="562" rx="12" fill="none" stroke="url(#borderGrad)" stroke-width="0.6" />
 
-  <text
-    x="536"
-    y="310"
-    text-anchor="middle"
-    font-family="Georgia, 'Times New Roman', serif"
-    font-size="124"
-    fill="url(#txt)"
-  >
-    S
-  </text>
-  <text
-    x="664"
-    y="310"
-    text-anchor="middle"
-    font-family="Georgia, 'Times New Roman', serif"
-    font-size="124"
-    fill="url(#txt)"
-  >
-    S
-  </text>
-  <path d="M600 238 L620 310 L600 382 L580 310 Z" fill="#f9a8d4" />
+  <!-- Corner ornaments -->
+  <text x="52" y="88" font-family="Georgia, serif" font-size="38" fill="#a78bfa" opacity="0.6">&#x2726;</text>
+  <text x="1112" y="88" font-family="Georgia, serif" font-size="38" fill="#f472b6" opacity="0.6">&#x2726;</text>
+  <text x="52" y="606" font-family="Georgia, serif" font-size="38" fill="#f472b6" opacity="0.6">&#x2726;</text>
+  <text x="1112" y="606" font-family="Georgia, serif" font-size="38" fill="#a78bfa" opacity="0.6">&#x2726;</text>
 
-  <text
-    x="600"
-    y="452"
-    text-anchor="middle"
-    font-family="Georgia, 'Times New Roman', serif"
-    font-size="42"
-    fill="#f5f3ff"
-  >
-    We're getting married
-  </text>
-  <text
-    x="600"
-    y="505"
-    text-anchor="middle"
-    font-family="Arial, Helvetica, sans-serif"
-    font-size="25"
-    fill="#a9a6c4"
-  >
-    Friday · 28 November 2026 · 6:30 PM
-  </text>
-  <text
-    x="600"
-    y="545"
-    text-anchor="middle"
-    font-family="Arial, Helvetica, sans-serif"
-    font-size="21"
-    fill="#a9a6c4"
-  >
-    Bhama Auditorium, Ammachanmukku, Mayyanad, Kollam
-  </text>
-  <text
-    x="600"
-    y="585"
-    text-anchor="middle"
-    font-family="Arial, Helvetica, sans-serif"
-    font-size="15"
-    letter-spacing="5"
-    fill="#6d6887"
-  >
-    YOU ARE INVITED
-  </text>
+  <!-- Top label -->
+  <text x="600" y="105" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="18" letter-spacing="8" fill="#a78bfa" opacity="0.85">WEDDING INVITATION</text>
+
+  <!-- Decorative line -->
+  <line x1="340" y1="120" x2="860" y2="120" stroke="#a78bfa" stroke-opacity="0.3" stroke-width="1" />
+  <text x="600" y="126" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#f9a8d4" opacity="0.5">&#x25C6;</text>
+
+  <!-- Main names -->
+  <text x="600" y="265" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="96" fill="url(#nameGrad)">Sneha</text>
+
+  <!-- Ampersand -->
+  <text x="600" y="335" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="42" fill="#f9a8d4" opacity="0.9">&amp;</text>
+
+  <!-- Second name -->
+  <text x="600" y="430" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="96" fill="url(#nameGrad)">Sarathraj</text>
+
+  <!-- Decorative divider -->
+  <line x1="380" y1="460" x2="820" y2="460" stroke="#f9a8d4" stroke-opacity="0.25" stroke-width="1" />
+  <text x="600" y="466" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#f9a8d4" opacity="0.4">&#x25C6;</text>
+
+  <!-- Date and time -->
+  <text x="600" y="510" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" letter-spacing="2" fill="#e2d9f3">Sunday &#xB7; 13 September 2026 &#xB7; 11:55 AM</text>
+
+  <!-- Venue -->
+  <text x="600" y="548" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#a9a6c4">Bhama Auditorium, Ammachanmukku, Mayyanad, Kollam</text>
+
+  <!-- Bottom label -->
+  <text x="600" y="590" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" letter-spacing="5" fill="#6d6887">YOU ARE INVITED</text>
 </svg>
