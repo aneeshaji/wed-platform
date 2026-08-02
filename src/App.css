@@ -2352,3 +2352,245 @@
     display: none;
   }
 }
+
+/* ---------- Caricatures & Hero Medallion Styling ---------- */
+
+.medallion-caricature-frame {
+  width: 225px;
+  height: 225px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, rgba(167, 139, 250, 0.25), rgba(10, 8, 22, 0.98));
+  border: 2px solid rgba(251, 191, 36, 0.45);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), inset 0 0 24px rgba(0, 0, 0, 0.8);
+  z-index: 2;
+}
+
+.caricature-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.4s ease;
+}
+
+.medallion:hover .caricature-hero-img {
+  transform: scale(1.06);
+}
+
+.medallion-badge {
+  position: absolute;
+  bottom: -10px;
+  z-index: 5;
+  padding: 5px 16px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(20, 15, 35, 0.95), rgba(35, 20, 50, 0.95));
+  border: 1px solid var(--amber);
+  color: var(--amber);
+  font-family: var(--display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6), 0 0 15px rgba(251, 191, 36, 0.3);
+}
+
+/* Caricature Showcase Grid */
+.section.caricatures {
+  padding: clamp(40px, 6vw, 80px) clamp(16px, 5vw, 60px);
+}
+
+.caricature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(20px, 3vw, 36px);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.caricature-card {
+  position: relative;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line-soft);
+  backdrop-filter: blur(16px);
+  overflow: hidden;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.caricature-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(251, 191, 36, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(167, 139, 250, 0.2);
+}
+
+.caricature-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background: radial-gradient(circle at center, rgba(167, 139, 250, 0.15), rgba(12, 9, 24, 0.95));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  overflow: hidden;
+}
+
+.caricature-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.4s ease;
+}
+
+.caricature-card:hover .caricature-img {
+  transform: scale(1.06);
+}
+
+.caricature-tag {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(18, 11, 24, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--amber);
+  letter-spacing: 0.05em;
+  z-index: 2;
+}
+
+.caricature-body {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.caricature-body h3 {
+  font-family: var(--display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.caricature-body p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* Gallery Caricature Tiles */
+.gallery-tile--caricature {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line-soft);
+  background: rgba(12, 9, 24, 0.9);
+}
+
+.gallery-tile-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gallery-tile-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 1;
+  transition: transform 0.45s ease, filter 0.45s ease;
+}
+
+.gallery-tile:hover .gallery-tile-img {
+  transform: scale(1.08);
+  filter: brightness(1.1);
+}
+
+.gallery-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 3;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(10, 8, 22, 0.85);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  backdrop-filter: blur(8px);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--amber);
+  letter-spacing: 0.06em;
+}
+
+/* Lightbox Modal Caricature Frame */
+.lightbox-inner--caricature {
+  width: min(520px, 90vw);
+  height: auto;
+  aspect-ratio: 4 / 5;
+  background: radial-gradient(circle at center, rgba(167, 139, 250, 0.2), rgba(10, 8, 24, 0.98));
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.8), 0 0 50px rgba(167, 139, 250, 0.25);
+  display: flex;
+  flex-direction: column;
+}
+
+.lightbox-img-frame {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+}
+
+.lightbox-caricature-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.lightbox-overlay {
+  padding: 20px 24px;
+  background: linear-gradient(180deg, rgba(10, 8, 22, 0.8) 0%, rgba(10, 8, 22, 0.98) 100%);
+  border-top: 1px solid var(--line-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lightbox-overlay .lightbox-tag {
+  position: static;
+  align-self: flex-start;
+  margin-bottom: 2px;
+}
+
+.lightbox-overlay .lightbox-caption {
+  position: static;
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: var(--text);
+  text-transform: none;
+}
+
+.lightbox-sub {
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+

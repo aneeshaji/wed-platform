@@ -39,58 +39,45 @@ const L = {
     heroDate: '13 September 2026',
     heroEvent: 'Muhurtham · 11:55',
     heroLead: 'We invite you to witness a beautifully modern celebration of love, blessings, and a future filled with joy.',
-    rsvpNow: 'RSVP Now',
     addToCalendar: 'Add to Calendar',
     shareAria: 'Share invitation',
     linkCopied: 'Link copied!',
     share: 'Share',
-    scroll: 'Scroll',
-    marquee: ['Shubh Vivah', '13 September 2026', 'Muhurtham', 'Reception', 'Bhama Auditorium, Kollam'],
-    countdownLabel: 'Counting down to our big day',
+    detailsKicker: 'Details',
+    scroll: 'Scroll down',
+    marquee: ['Sneha & Sarathraj', '13 September 2026', 'Bhama Auditorium, Mayyanad', 'Join Our Celebration'],
+    countdownLabel: 'Counting Down to the Muhurtham',
     days: 'Days',
     hours: 'Hours',
-    minutes: 'Minutes',
-    seconds: 'Seconds',
+    minutes: 'Mins',
+    seconds: 'Secs',
     until: 'Until',
-    countdownDate: 'Sunday · 13 September 2026 · 11:55',
+    countdownDate: '13 September 2026 · 11:55 AM',
     eventsKicker: 'Celebrations',
-    eventsTitle: 'Two moments, one celebration',
-    storyKicker: 'Our story',
-    storyTitle: 'A beautiful beginning',
-    storyLede: 'From the first spark to this new chapter, every step has led us here with wonder, warmth, and purpose.',
-    storyQuote: 'With gratitude in our hearts, we invite you to celebrate this beautiful milestone with us.',
+    eventsTitle: 'Events & Ceremonies',
+    storyKicker: 'Our Journey',
+    storyTitle: 'Two Hearts, One Journey',
+    storyLede: 'Surrounded by family and lifelong friends, we begin our greatest chapter together.',
+    storyQuote: 'Love does not consist in gazing at each other, but in looking outward together in the same direction.',
     galleryKicker: 'Moments',
-    galleryTitle: 'Our journey in pictures',
-    openPhoto: 'Open photo',
-    detailsKicker: 'The essentials',
-    detailsTitle: 'Everything you need to know',
-    venueKicker: 'Getting there',
-    venueTitle: 'Find the venue',
-    venueNote: 'Scan the code or tap the button for live directions straight to the entrance.',
+    galleryTitle: 'Photo Gallery',
+    openPhoto: 'View photo',
+    detailsTitle: 'Event Highlights',
+    venueKicker: 'Location',
+    venueTitle: 'The Venue & Directions',
+    venueNote: 'Located conveniently at Ammachanmukku, Koottikada, Mayyanad, Kollam with ample guest parking.',
     mapsOpen: 'Open in Google Maps',
-    copyAddress: 'Copy address',
     copied: 'Copied!',
-    scanDirections: 'Scan to open directions',
-    scheduleKicker: 'Celebration plan',
-    scheduleTitle: 'Two events, one weekend',
-    travelKicker: 'Plan your visit',
-    travelTitle: 'Getting there & staying over',
-    faqKicker: 'Good to know',
-    faqTitle: 'Frequently asked questions',
-    rsvpKicker: 'Kindly respond',
-    rsvpThanks: 'Thank you!',
-    rsvpSuccess: 'Your response has been noted. We look forward to celebrating with you.',
-    rsvpEdit: 'Edit response',
-    rsvpHead: 'Your presence completes the celebration',
-    rsvpDeadline: 'Kindly share your plans by 1 October 2026.',
-    nameLabel: 'Full name',
-    namePlaceholder: 'Your full name',
-    guestLabel: 'Guest count',
-    noteLabel: 'Blessing or note',
-    notePlaceholder: 'Leave a kind message',
-    confirm: 'Confirm Attendance',
-    sending: 'Sending…',
-    rsvpError: 'Something went wrong while sending your response. Please try again.',
+    copyAddress: 'Copy Address',
+    scanDirections: 'Scan for directions',
+    scheduleKicker: 'Timeline',
+    scheduleTitle: 'Wedding Schedule',
+    travelKicker: 'Guest Info',
+    travelTitle: 'Travel & Stay',
+    faqKicker: 'Questions',
+    faqTitle: 'Frequently Asked Questions',
+    caricaturesKicker: 'Illustrations',
+    caricaturesTitle: 'Couple Caricature Showcase',
     footerDate: 'Sunday · 13 September 2026 · Bhama Auditorium, Mayyanad, Kollam, Kerala',
     footerMade: 'Crafted with love, for our celebration.',
     shareMailAria: 'Share via email',
@@ -101,96 +88,116 @@ const L = {
     closeMenu: 'Close menu',
     openMenu: 'Open menu',
     closePhoto: 'Close photo',
-    calendarSummary: 'Sneha & Sarath — Muhurtham',
-    calendarReceptionSummary: 'Sneha & Sarath — Reception',
-    shareBody: 'You are invited! Join us for the Muhurtham ceremony on Sunday, 13 September 2026 at 11:55, at Bhama Auditorium, Mayyanad, Kollam, Kerala.',
-    shareMailTitle: 'Sneha & Sarath — Wedding Invitation',
+    calendarSummary: 'Sneha & Sarathraj — Muhurtham',
+    calendarReceptionSummary: 'Sneha & Sarathraj — Reception',
+    shareBody: 'You are invited! Join us for the Muhurtham ceremony on Sunday, 13 September 2026 at 11:55, at Bhama Auditorium, Ammachanmukku, Koottikada, Mayyanad, Kollam, Kerala.',
+    shareMailTitle: 'Sneha & Sarathraj — Wedding Invitation',
   },
   ml: {
-     eyebrow: 'നിങ്ങളെ ക്ഷണിക്കുന്നു',
-     heroDay: 'ഞായറാഴ്ച',
-     heroDate: '13 സെപ്റ്റംബർ 2026',
-     heroEvent: 'മുഹൂർത്തം 11:55',
-     heroLead: 'സ്നേഹത്തിന്റെയും അനുഗ്രഹത്തിന്റെയും സന്തോഷം നിറഞ്ഞ ആഘോഷത്തിന് നിങ്ങളെ ക്ഷണിക്കുന്നു.',
-     rsvpNow: 'RSVP',
-     addToCalendar: 'കലണ്ടറിൽ',
-     shareAria: 'പങ്കിടുക',
-     linkCopied: 'പകർത്തി!',
-     share: 'പങ്കിടുക',
-     scroll: 'താഴേക്ക്',
-     marquee: ['വിവാഹം', '13-09-2026', 'മുഹൂർത്തം', 'റിസപ്ഷൻ', 'ഭാമാ ഓഡിറ്റോറിയം, കൊല്ലം'],
-     countdownLabel: 'വലിയ ദിവസത്തിലേക്ക്',
-     days: 'ദിവസം',
-     hours: 'മണിക്കൂർ',
-     minutes: 'മിനിറ്റ്',
-     seconds: 'സെക്കൻഡ്',
-     until: 'വരെ',
-     countdownDate: '13-09-2026 · 11:55',
-     eventsKicker: 'ആഘോഷങ്ങൾ',
-     eventsTitle: 'രണ്ട് ആഘോഷം',
-     storyKicker: 'ഞങ്ങളുടെ കഥ',
-     storyTitle: 'മനോഹരമായ തുടക്കം',
-     storyLede: 'ആദ്യം എന്തായിരുന്നു, ഇന്ന് ഞങ്ങൾ ഒരുമിച്ച്.',
-     storyQuote: 'നന്ദിയോടെ, ഞങ്ങളോടൊപ്പം ആഘോഷിക്കാൻ ക്ഷണിക്കുന്നു.',
-     galleryKicker: 'നിമിഷങ്ങൾ',
-     galleryTitle: 'ചിത്രങ്ങൾ',
-     openPhoto: 'ചിത്രം തുറക്കുക',
-     detailsKicker: 'അത്യാവശ്യങ്ങൾ',
-     detailsTitle: 'എല്ലാം അറിയുക',
-     venueKicker: 'എത്താനുള്ള വഴി',
-     venueTitle: 'വേദി കണ്ടെത്തുക',
-     venueNote: 'അകത്തേക്കുള്ള ദിശയ്ക്ക് QR സ്കാൻ ചെയ്യുക.',
-     mapsOpen: 'Google മാപ്സ്',
-     copyAddress: 'വിലാസം പകർത്തുക',
-     copied: 'പകർത്തി!',
-     scanDirections: 'ദിശയ്ക്ക് സ്കാൻ ചെയ്യുക',
-     scheduleKicker: 'പരിപാടി',
-     scheduleTitle: 'രണ്ട് ആഘോഷം',
-     travelKicker: 'യാത്ര',
-     travelTitle: 'എങ്ങനെ എത്താം',
-     faqKicker: 'അറിയാൻ',
-     faqTitle: 'ചോദ്യങ്ങൾ',
-     rsvpKicker: 'മറുപടി',
-     rsvpThanks: 'നന്ദി!',
-     rsvpSuccess: 'നിങ്ങളുടെ മറുപടി ലഭിച്ചു.',
-     rsvpEdit: 'മാറ്റുക',
-     rsvpHead: 'നിങ്ങള് ആഘോഷം പൂർണം',
-     rsvpDeadline: '2026 ഒക്ടോബർ 1-നു മുമ്പ് മറുപടി.',
-     nameLabel: 'പേർ',
-     namePlaceholder: 'നിങ്ങളുടെ പേർ',
-     guestLabel: 'അതിഥികളുടെ എണ്ണം',
-     noteLabel: 'അനുഗ്രഹം',
-     notePlaceholder: 'വാക്കുകൾ എഴുതുക',
-     confirm: 'ഹാജർ രേഖപ്പെടുത്തുക',
-     sending: 'അയയ്ക്കുന്നു…',
-     rsvpError: 'എന്തോ പിഴവ്. വീണ്ടും ശ്രമിക്കുക.',
-     footerDate: '13-09-2026 · ഭാമാ ഓഡിഹിറിയം · മയ്യനാദ്',
-     footerMade: 'സ്നേഹത്തോടെ ഞങ്ങൾ നിർമ്മിച്ചത്.',
-     shareMailAria: 'ഇമെയിൽ',
-     designedBy: 'രൂപകൽപ്പന',
-     developedBy: 'സാങ്കേതികം',
-     allRights: 'എല്ലാ അവകാശങ്ങളും',
-     backTop: 'മുകളിലേക്ക്',
-     closeMenu: 'അടയ്ക്കുക',
-     openMenu: 'തുറക്കുക',
-     closePhoto: 'ചിത്രം അടയ്ക്കുക',
-     calendarSummary: 'സ്നേഹ & സാരത് — മുഹൂർത്തം',
-     calendarReceptionSummary: 'സ്നേഹ & സാരത് — റിസപ്ഷൻ',
-     shareBody: '13-09-2026 11:59, ഭാമാ ഓഡിഹിറിയം, മയ്യനാദ്, കൊല്ലം.',
-     shareMailTitle: 'സ്നേഹ & സാരത് — വിവാഹ ക്ഷണം',
+    eyebrow: 'നിങ്ങളെ ക്ഷണിക്കുന്നു',
+    heroDay: 'ഞായറാഴ്ച',
+    heroDate: '13 സെപ്റ്റംബർ 2026',
+    heroEvent: 'മുഹൂർത്തം 11:55',
+    heroLead: 'സ്നേഹത്തിന്റെയും അനുഗ്രഹത്തിന്റെയും സന്തോഷം നിറഞ്ഞ ആഘോഷത്തിന് നിങ്ങളെ ക്ഷണിക്കുന്നു.',
+    addToCalendar: 'കലണ്ടറിലേക്ക് ചേർക്കുക',
+    shareAria: 'ക്ഷണക്കത്ത് പങ്കിടുക',
+    linkCopied: 'ലിങ്ക് പകർത്തി!',
+    share: 'പങ്കിടുക',
+    detailsKicker: 'വിവരങ്ങൾ',
+    scroll: 'താഴേക്ക് പോകുക',
+    marquee: ['സ്നേഹ & സാരഥ്രാജ്', '13 സെപ്റ്റംബർ 2026', 'ഭാമാ ഓഡിറ്റോറിയം, മയ്യനാദ്', 'ഞങ്ങളുടെ ആഘോഷത്തിൽ പങ്കുചേരൂ'],
+    countdownLabel: 'മുഹൂർത്തത്തിലേക്കുള്ള സമയം',
+    days: 'ദിവസങ്ങൾ',
+    hours: 'മണിക്കൂറുകൾ',
+    minutes: 'മിനിറ്റുകൾ',
+    seconds: 'സെക്കൻഡുകൾ',
+    until: 'ഇനി',
+    countdownDate: '13 സെപ്റ്റംബർ 2026 · 11:55 AM',
+    eventsKicker: 'ആഘോഷങ്ങൾ',
+    eventsTitle: 'ചടങ്ങുകൾ',
+    storyKicker: 'ഞങ്ങളുടെ യാത്ര',
+    storyTitle: 'രണ്ട് ഹൃദയങ്ങൾ, ഒരു യാത്ര',
+    storyLede: 'കുടുംബത്തിന്റെയും സുഹൃത്തുക്കളുടെയും സാന്നിധ്യത്തിൽ ഞങ്ങൾ പുതിയൊരു ജീവിതത്തിലേക്ക് കടക്കുന്നു.',
+    storyQuote: 'സ്നേഹം എന്നത് പരസ്പരം നോക്കിയിരിക്കലല്ല, ഒരേ ദിശയിലേക്ക് ഒരുമിച്ച് നോക്കുന്നതാണ്.',
+    galleryKicker: 'ചിത്രങ്ങൾ',
+    galleryTitle: 'ഫോട്ടോ ഗ്യാലറി',
+    openPhoto: 'ചിത്രം കാണുക',
+    detailsTitle: 'പ്രധാന വിവരങ്ങൾ',
+    venueKicker: 'വേദി',
+    venueTitle: 'വേദിയും വഴിയും',
+    venueNote: 'മയ്യനാട് അമ്മാച്ചൻമുക്കിൽ സ്ഥിതി ചെയ്യുന്ന ഓഡിറ്റോറിയം. വിശാലമായ പാർക്കിംഗ് സൗകര്യം ലഭ്യമാണ്.',
+    mapsOpen: 'ഗൂഗിൾ മാപ്പിൽ കാണുക',
+    copied: 'പകർത്തി!',
+    copyAddress: 'വിലാസം പകർത്തുക',
+    scanDirections: 'വഴിയറിയാൻ സ്കാൻ ചെയ്യൂ',
+    scheduleKicker: 'സമയക്രമം',
+    scheduleTitle: 'വിവാഹ ഷെഡ്യൂൾ',
+    travelKicker: 'യാത്രാ വിവരങ്ങൾ',
+    travelTitle: 'യാത്രയും താമസവും',
+    faqKicker: 'സംശയങ്ങൾ',
+    faqTitle: 'ചോദ്യോത്തരം',
+    caricaturesKicker: 'ചിത്രരൂപങ്ങൾ',
+    caricaturesTitle: 'കരിക്കേച്ചർ ഓർമ്മകൾ',
+    footerDate: '13-09-2026 · ഭാമാ ഓഡിറ്റോറിയം · മയ്യനാദ്',
+    footerMade: 'സ്നേഹത്തോടെ ഞങ്ങൾ നിർമ്മിച്ചത്.',
+    shareMailAria: 'ഇമെയിൽ',
+    designedBy: 'രൂപകൽപ്പന',
+    developedBy: 'സാങ്കേതികം',
+    allRights: 'എല്ലാ അവകാശങ്ങളും',
+    backTop: 'മുകളിലേക്ക്',
+    closeMenu: 'അടയ്ക്കുക',
+    openMenu: 'തുറക്കുക',
+    closePhoto: 'ചിത്രം അടയ്ക്കുക',
+    calendarSummary: 'സ്നേഹ & സാരഥ്രാജ് — മുഹൂർത്തം',
+    calendarReceptionSummary: 'സ്നേഹ & സാരഥ്രാജ് — റിസപ്ഷൻ',
+    shareBody: '13-09-2026 11:55, ഭാമാ ഓഡിറ്റോറിയം, മയ്യനാദ്, കൊല്ലം.',
+    shareMailTitle: 'സ്നേഹ & സാരഥ്രാജ് — വിവാഹ ക്ഷണം',
   },
 }
 
 /* MARKER_X7 */
 const navLinks = [
-  { href: '#events', en: 'Events', ml: 'ആഘോഷം' },
+  { href: '#caricatures', en: 'Caricatures', ml: 'ചിത്രങ്ങൾ' },
+  { href: '#events', en: 'Events', ml: 'ആഘോഷങ്ങൾ' },
   { href: '#story', en: 'Story', ml: 'കഥ' },
-  { href: '#gallery', en: 'Gallery', ml: 'ചിത്രശാല' },
+  { href: '#gallery', en: 'Gallery', ml: 'ഗ്യാലറി' },
   { href: '#venue', en: 'Venue', ml: 'വേദി' },
-  { href: '#schedule', en: 'Schedule', ml: 'പദ്ധതി' },
+  { href: '#schedule', en: 'Schedule', ml: 'ഷെഡ്യൂൾ' },
   { href: '#travel', en: 'Travel', ml: 'യാത്ര' },
-  { href: '#faq', en: 'FAQs', ml: 'ചോദ്യം' },
-  { href: '#rsvp', en: 'RSVP', ml: 'RSVP' },
+  { href: '#faq', en: 'FAQs', ml: 'ചോദ്യോത്തരം' },
+]
+
+const caricatures = [
+  {
+    id: 'muhurtham',
+    src: '/images/couple_caricature_hero.png',
+    tag: { en: 'Muhurtham Pose', ml: 'മുഹൂർത്ത ഭംഗി' },
+    title: { en: 'Traditional Blessings', ml: 'പരമ്പരാഗത ഐശ്വര്യം' },
+    desc: {
+      en: 'Dressed in traditional Kerala Kasavu attire with warm smiles and divine wedding blessings.',
+      ml: 'കേരളീയ തനിമയാർന്ന വസ്ത്രധാരണത്തിൽ ഐശ്വര്യപൂർണ്ണമായ ഭാവങ്ങൾ.',
+    },
+  },
+  {
+    id: 'story',
+    src: '/images/couple_caricature_story.png',
+    tag: { en: 'Love Story', ml: 'പ്രണയ കഥ' },
+    title: { en: 'Under the Muthukkuda', ml: 'മുത്തുക്കുടക്കീഴിൽ' },
+    desc: {
+      en: 'Sharing a sweet, playful moment beneath the traditional festive umbrella.',
+      ml: 'മുത്തുക്കുടക്കീഴിൽ പങ്കിടുന്ന അവിസ്മരണീയമായ പ്രണയനിമിഷം.',
+    },
+  },
+  {
+    id: 'reception',
+    src: '/images/couple_caricature_reception.png',
+    tag: { en: 'Reception Glam', ml: 'റിസപ്ഷൻ രാവ്' },
+    title: { en: 'Evening Celebration', ml: 'സന്ധ്യാഘോഷം' },
+    desc: {
+      en: 'A sparkling evening of music, dance, and laughter under floating fairy lights.',
+      ml: 'വർണ്ണാഭമായ സംഗീതവും വെളിച്ചവും നിറഞ്ഞ റിസപ്ഷൻ സന്ധ്യ.',
+    },
+  },
 ]
 
 /* ---------------- Content config ---------------- */
@@ -210,7 +217,7 @@ const highlights = [
   },
   {
     key: 'theme',
-    label: { en: 'Theme', ml: 'തീം' },
+    label: { en: 'Theme', ml: 'ആശയം' },
     value: 'Thaali kettu',
     detail: {
       en: 'An auspicious moment — the muhurtham marks our hands joined in blessing.',
@@ -233,11 +240,11 @@ const schedule = [
   },
   {
     icon: GlassIcon,
-    time: { en: 'Saturday · Evening', ml: 'ശനി · വൈകുന്നേരം' },
-    title: { en: 'Reception — celebration', ml: 'റിസ്ഷൻ' },
+    time: { en: 'Saturday · 4:00 PM onwards', ml: 'ശനി · വൈകുന്നേരം 4 മണി മുതൽ' },
+    title: { en: 'Reception — celebration', ml: 'റിസപ്ഷൻ — ആഘോഷം' },
     note: {
-      en: 'An elegant evening of music, joy and togetherness as we celebrate our wedding weekend.',
-      ml: 'സംഗീതവും സന്തോഷവും നിറഞ്ഞ സന്ധ്യ.',
+      en: 'An elegant evening of music, joy and togetherness as we celebrate our wedding weekend. Begins at 4:00 PM.',
+      ml: 'സംഗീതവും സന്തോഷവും നിറഞ്ഞ സന്ധ്യ. വൈകുന്നേരം 4 മണിമുതൽ.',
     },
   },
 ]
@@ -264,8 +271,7 @@ const petals = [
   { left: '14%', size: 11, pd: '16s', pdelay: '6s', sway: '36px' },
 ]
 
-/* Formspree endpoint — leave empty to simulate success */
-const rsvpEndpoint = ''
+
 
 const weddingTarget = new Date('2026-09-13T11:55:00+05:30').getTime()
 
@@ -281,9 +287,9 @@ const events = [
   },
   {
     key: 'reception',
-    title: { en: 'Reception', ml: 'റിസ്ഷൻ' },
+    title: { en: 'Reception', ml: 'റിസപ്ഷൻ' },
     date: { en: '12 September 2026', ml: '12-09-2026' },
-    time: null,
+    time: { en: '4:00 PM onwards', ml: 'വൈകുന്നേരം 4 മണി മുതൽ' },
     venue: 'Bhama Auditorium',
     address: venueAddress,
     icon: GlassIcon,
@@ -291,12 +297,48 @@ const events = [
 ]
 
 const galleryTiles = [
-  { c1: '#a78bfa', c2: '#6d28d9', caption: { en: 'Our engagement', ml: 'വിവാഹ്' } },
-  { c1: '#f472b6', c2: '#be185d', caption: { en: 'The proposal', ml: 'നിശ്ചയം' } },
-  { c1: '#fbbf34', c2: '#d97706', caption: { en: 'Family & friends', ml: 'കുടുംബ' } },
-  { c1: '#c4b5fd', c2: '#7c3aed', caption: { en: 'Save the date', ml: 'ദിനം' } },
-  { c1: '#fda4af', c2: '#e11d48', caption: { en: 'Haldi moments', ml: 'Haldi' } },
-  { c1: '#fcd34d', c2: '#b45309', caption: { en: 'Celebrations', ml: 'ആഘോഷം' } },
+  {
+    img: '/images/couple_caricature_hero.png',
+    c1: '#a78bfa',
+    c2: '#6d28d9',
+    caption: { en: 'Traditional Muhurtham', ml: 'പരമ്പരാഗത മുഹൂർത്തം' },
+    tag: { en: 'Ceremony', ml: 'ചടങ്ങ്' },
+  },
+  {
+    img: '/images/couple_caricature_story.png',
+    c1: '#f472b6',
+    c2: '#be185d',
+    caption: { en: 'Under the Muthukkuda', ml: 'മുത്തുക്കുടക്കീഴിൽ' },
+    tag: { en: 'Love Story', ml: 'പ്രണയം' },
+  },
+  {
+    img: '/images/couple_caricature_reception.png',
+    c1: '#fbbf34',
+    c2: '#d97706',
+    caption: { en: 'Evening Reception', ml: 'സന്ധ്യാ റിസപ്ഷൻ' },
+    tag: { en: 'Celebration', ml: 'ആഘോഷം' },
+  },
+  {
+    img: '/images/caricature_savethedate.svg',
+    c1: '#c4b5fd',
+    c2: '#7c3aed',
+    caption: { en: 'Save the Date', ml: 'തീയതി ഓർക്കുക' },
+    tag: { en: 'Invitation', ml: 'ക്ഷണം' },
+  },
+  {
+    img: '/images/caricature_haldi.svg',
+    c1: '#fda4af',
+    c2: '#e11d48',
+    caption: { en: 'Haldi & Blessings', ml: 'മഞ്ഞളണിഞ്ഞ നിമിഷം' },
+    tag: { en: 'Rituals', ml: 'ചടങ്ങുകൾ' },
+  },
+  {
+    img: '/images/caricature_sangeet.svg',
+    c1: '#fcd34d',
+    c2: '#b45309',
+    caption: { en: 'Music & Sangeet', ml: 'സംഗീത രാവ്' },
+    tag: { en: 'Memories', ml: 'ഓർമ്മകൾ' },
+  },
 ]
 
 const faqs = [
@@ -313,12 +355,8 @@ const faqs = [
     a: { en: 'Yes, ample parking is available at Bhama Auditorium.', ml: 'ഉണ്ട്.' },
   },
   {
-    q: { en: 'Can I bring a plus one?', ml: 'മറ്റൊരാളെ വരാൻ?' },
-    a: { en: 'Please include your guest count in the RSVP so we can plan accordingly.', ml: 'RSVP-ൽ എണ്ണം രേഖപ്പെടുത്തുക.' },
-  },
-  {
-    q: { en: 'What about gifts?', ml: 'സമ്മാനം?' },
-    a: { en: 'Your presence is the greatest gift. A blessing or card at the venue is appreciated.', ml: 'നിങ്ങളുടെ സാന്നിധ്യം ഏറ്റം വലിയ സമ്മാനം.' },
+    q: { en: 'Can I bring a plus one?', ml: 'ഒരാളെ കൂടി കൊണ്ടുവരാമോ?' },
+    a: { en: 'Yes, family and guests are welcome to celebrate with us.', ml: 'അതെ, എല്ലാവർക്കും സ്വാഗതം.' },
   },
 ]
 
@@ -333,7 +371,7 @@ const travelData = [
   },
   {
     icon: TrainIcon,
-    title: { en: 'By train', ml: 'റീല്' },
+    title: { en: 'By train', ml: 'ട്രെയിനിൽ' },
     detail: {
       en: 'Kollam Junction railway station is about 9 km from the venue.',
       ml: 'കൊല്ലം ജംഗ്ഷൻ സ്റ്റേഷൻ, ഏകദേശം 9 കി.മീ.',
@@ -341,7 +379,7 @@ const travelData = [
   },
   {
     icon: MapPinIcon,
-    title: { en: 'By road', ml: 'റൈഡ്' },
+    title: { en: 'By road', ml: 'റോഡ് മാർഗം' },
     detail: {
       en: 'The venue sits near Mayyanad on NH66, easy to reach by car.',
       ml: 'മയ്യനാദിനടുത്ത്, NH66.',
@@ -359,8 +397,8 @@ const travelData = [
     icon: PhoneIcon,
     title: { en: 'Need help?', ml: 'സഹായം' },
     detail: {
-      en: 'For travel, stay, or anything at all, reach out to the family coordinator.',
-      ml: 'കുടുംബത്തിന്റെ ഭാരവഹിയുമായി ബന്ധപ്പെടുക.',
+      en: 'For travel, stay, or anything at all, contact the family: Sreejith N — 70251 82667 or 73566 85094.',
+      ml: 'സ്രീജിത്ത് എൻ — 70251 82667 / 73566 85094.',
     },
   },
 ]
@@ -438,13 +476,9 @@ function App() {
   })
   const { scrolled, showTop } = useHeaderScroll()
   const pageRef = useReveal()
-  const [guests, setGuests] = useState('2')
   const [copied, setCopied] = useState(false)
   const [addressCopied, setAddressCopied] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [rsvpName, setRsvpName] = useState('')
-  const [rsvpNote, setRsvpNote] = useState('')
-  const [rsvpStatus, setRsvpStatus] = useState('idle') // idle | submitting | success | error
   const [lightbox, setLightbox] = useState(null)
   const [openFaq, setOpenFaq] = useState(null)
   const countdown = useCountdown(weddingTarget)
@@ -524,8 +558,8 @@ function App() {
       'BEGIN:VEVENT',
       `UID:${stamp}-reception@framezlabs.store`,
       `DTSTAMP:${stamp}`,
-      'DTSTART;TZID=Asia/Kolkata:20260912T183000',
-      'DTEND;TZID=Asia/Kolkata:20260912T223000',
+      'DTSTART;TZID=Asia/Kolkata:20260912T160000',
+      'DTEND;TZID=Asia/Kolkata:20260912T220000',
       `SUMMARY:${T.calendarReceptionSummary}`,
       `LOCATION:${venueAddress}`,
       'END:VEVENT',
@@ -535,34 +569,14 @@ function App() {
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
-    a.download = 'sneha-sarath-wedding.ics'
+    a.download = 'sneha-sarathraj-wedding.ics'
     document.body.appendChild(a)
     a.click()
     a.remove()
     URL.revokeObjectURL(url)
   }
 
-  const submitRsvp = async (e) => {
-    e.preventDefault()
-    if (!rsvpName.trim()) return
-    setRsvpStatus('submitting')
-    const payload = { name: rsvpName.trim(), guests, note: rsvpNote.trim() }
-    try {
-      if (rsvpEndpoint) {
-        const res = await fetch(rsvpEndpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify(payload),
-        })
-        if (!res.ok) throw new Error('RSVP submission failed')
-      } else {
-        await new Promise((r) => setTimeout(r, 900))
-      }
-      setRsvpStatus('success')
-    } catch {
-      setRsvpStatus('error')
-    }
-  }
+
 
   const mailHref = `mailto:?subject=${encodeURIComponent(T.shareMailTitle)}&body=${encodeURIComponent(
     `${T.shareBody} ${window.location.href}`,
@@ -627,9 +641,6 @@ function App() {
           ))}
         </nav>
         <span className="topbar-lang">{languageSwitch}</span>
-        <a className="btn btn--primary topbar-cta" href="#rsvp">
-          {T.rsvpNow}
-        </a>
         <button
           className={`nav-toggle${menuOpen ? ' nav-toggle--open' : ''}`}
           type="button"
@@ -653,13 +664,6 @@ function App() {
           </a>
         ))}
         {languageSwitch}
-        <a
-          className="btn btn--primary mobile-menu-cta"
-          href="#rsvp"
-          onClick={() => setMenuOpen(false)}
-        >
-          {T.rsvpNow}
-        </a>
       </div>
 
       <main id="top">
@@ -687,7 +691,7 @@ function App() {
             <h1 className="hero-title">
               <span className="word">{splitWord('Sneha')}</span>
               <em className="amp">&amp;</em>
-              <span className="word">{splitWord('Sarath Raj')}</span>
+              <span className="word">{splitWord('Sarathraj')}</span>
             </h1>
             <p className="hero-date">
               <span>{T.heroDay}</span>
@@ -702,10 +706,7 @@ function App() {
             </p>
             <p className="hero-lead">{T.heroLead}</p>
             <div className="hero-cta">
-              <a className="btn btn--primary" href="#rsvp">
-                {T.rsvpNow}
-              </a>
-              <button className="btn btn--ghost" type="button" onClick={downloadCalendar}>
+              <button className="btn btn--primary" type="button" onClick={downloadCalendar}>
                 <CalendarIcon size={16} /> {T.addToCalendar}
               </button>
               <span className="share-wrap">
@@ -733,8 +734,15 @@ function App() {
             </span>
             <div className="medallion">
               <div className="medallion-ring" aria-hidden="true" />
-              <div className="medallion-inner">
-                S<br />✦<br />S
+              <div className="medallion-caricature-frame">
+                <img
+                  src="/images/couple_caricature_hero.png"
+                  alt="Sneha & Sarathraj Wedding Caricature"
+                  className="caricature-hero-img"
+                />
+              </div>
+              <div className="medallion-badge">
+                S ✦ S
               </div>
             </div>
             <div className="float-chip chip--venue">
@@ -785,6 +793,35 @@ function App() {
           <p className="countdown-date" data-reveal style={{ '--d': '200ms' }}>
             {T.until} <strong>{T.countdownDate}</strong>
           </p>
+        </section>
+
+        <section className="section caricatures" id="caricatures">
+          <div className="section-heading" data-reveal>
+            <span className="kicker">
+              <i aria-hidden="true" /> <SparklesIcon size={15} className="kicker-icon" />{' '}
+              {T.caricaturesKicker} <i aria-hidden="true" />
+            </span>
+            <h2>{T.caricaturesTitle}</h2>
+          </div>
+          <div className="caricature-grid" data-reveal>
+            {caricatures.map((c, i) => (
+              <div
+                className="caricature-card"
+                key={c.id}
+                data-reveal
+                style={{ '--d': `${i * 120}ms` }}
+              >
+                <div className="caricature-img-wrap">
+                  <img src={c.src} alt={tr(c.title)} className="caricature-img" />
+                  <span className="caricature-tag">{tr(c.tag)}</span>
+                </div>
+                <div className="caricature-body">
+                  <h3>{tr(c.title)}</h3>
+                  <p>{tr(c.desc)}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </section>
 
         <section className="section events" id="events">
@@ -855,13 +892,18 @@ function App() {
           <div className="gallery-grid" data-reveal>
             {galleryTiles.map((tile, i) => (
               <button
-                className="gallery-tile"
+                className="gallery-tile gallery-tile--caricature"
                 key={i}
                 type="button"
                 onClick={() => setLightbox(i)}
                 aria-label={`${T.openPhoto} ${tr(tile.caption)}`}
-                style={{ background: `linear-gradient(150deg, ${tile.c1}, ${tile.c2})` }}
               >
+                <div
+                  className="gallery-tile-backdrop"
+                  style={{ background: `radial-gradient(circle at center, ${tile.c1}44, #0b0816 85%)` }}
+                />
+                <img src={tile.img} alt={tr(tile.caption)} className="gallery-tile-img" />
+                <span className="gallery-tag">{tr(tile.tag)}</span>
                 <span className="gallery-watermark">S ✦ S</span>
                 <span className="gallery-caption">{tr(tile.caption)}</span>
               </button>
@@ -1048,91 +1090,6 @@ function App() {
             ))}
           </div>
         </section>
-
-        <section className="section rsvp" id="rsvp">
-          <div className="rsvp-card" data-reveal>
-            <span className="kicker kicker--center">
-              <i aria-hidden="true" /> <EnvelopeIcon size={15} className="kicker-icon" />{' '}
-              {T.rsvpKicker} <i aria-hidden="true" />
-            </span>
-            {rsvpStatus === 'success' ? (
-              <div className="rsvp-success">
-                <span className="rsvp-check" aria-hidden="true">
-                  <CheckIcon size={34} />
-                </span>
-                <h2>{T.rsvpThanks}</h2>
-                <p className="rsvp-intro">{T.rsvpSuccess}</p>
-                <button
-                  className="btn btn--ghost"
-                  type="button"
-                  onClick={() => setRsvpStatus('idle')}
-                >
-                  {T.rsvpEdit}
-                </button>
-              </div>
-            ) : (
-              <>
-                <h2>{T.rsvpHead}</h2>
-                <p className="rsvp-intro">{T.rsvpDeadline}</p>
-                <form className="rsvp-form" onSubmit={submitRsvp}>
-                  <div className="field">
-                    <label htmlFor="rsvp-name">{T.nameLabel}</label>
-                    <input
-                      id="rsvp-name"
-                      type="text"
-                      placeholder={T.namePlaceholder}
-                      autoComplete="name"
-                      required
-                      value={rsvpName}
-                      onChange={(e) => setRsvpName(e.target.value)}
-                    />
-                  </div>
-                  <div className="field">
-                    <label id="rsvp-guests-label">{T.guestLabel}</label>
-                    <div className="segmented" role="group" aria-labelledby="rsvp-guests-label">
-                      {['1', '2', '3', '4'].map((n) => (
-                        <button
-                          key={n}
-                          type="button"
-                          className={
-                            guests === n ? 'segmented-opt segmented-opt--active' : 'segmented-opt'
-                          }
-                          aria-pressed={guests === n}
-                          onClick={() => setGuests(n)}
-                        >
-                          {n}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="field">
-                    <label htmlFor="rsvp-note">{T.noteLabel}</label>
-                    <textarea
-                      id="rsvp-note"
-                      rows="3"
-                      placeholder={T.notePlaceholder}
-                      value={rsvpNote}
-                      onChange={(e) => setRsvpNote(e.target.value)}
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="btn btn--primary submit"
-                    disabled={rsvpStatus === 'submitting'}
-                  >
-                    <EnvelopeIcon size={16} />
-                    {rsvpStatus === 'submitting' ? T.sending : T.confirm}
-                  </button>
-                  {rsvpStatus === 'error' && (
-                    <p className="rsvp-error" role="alert">
-                      {T.rsvpError}
-                    </p>
-                  )}
-                </form>
-              </>
-            )}
-          </div>
-        </section>
       </main>
 
       <footer className="site-footer">
@@ -1211,14 +1168,21 @@ function App() {
           onClick={() => setLightbox(null)}
         >
           <div
-            className="lightbox-inner"
-            style={{
-              background: `linear-gradient(150deg, ${galleryTiles[lightbox].c1}, ${galleryTiles[lightbox].c2})`,
-            }}
+            className="lightbox-inner lightbox-inner--caricature"
             onClick={(e) => e.stopPropagation()}
           >
-            <span className="lightbox-watermark">S ✦ S</span>
-            <p className="lightbox-caption">{tr(galleryTiles[lightbox].caption)}</p>
+            <div className="lightbox-img-frame">
+              <img
+                src={galleryTiles[lightbox].img}
+                alt={tr(galleryTiles[lightbox].caption)}
+                className="lightbox-caricature-img"
+              />
+            </div>
+            <div className="lightbox-overlay">
+              <span className="lightbox-tag">{tr(galleryTiles[lightbox].tag)}</span>
+              <p className="lightbox-caption">{tr(galleryTiles[lightbox].caption)}</p>
+              <span className="lightbox-sub">Sneha &amp; Sarathraj · 13.09.2026</span>
+            </div>
           </div>
           <button
             className="lightbox-close"

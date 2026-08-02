@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bg3" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#1e1b4b" />
+      <stop offset="55%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </radialGradient>
+    <linearGradient id="violet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c4b5fd" />
+      <stop offset="50%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#6d28d9" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="500" fill="url(#bg3)" />
+  
+  <!-- Fairy Lights Garland -->
+  <path d="M0,40 Q100,90 200,40 Q300,90 400,40" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" />
+  <circle cx="50" cy="58" r="5" fill="#fde047" />
+  <circle cx="100" cy="66" r="5" fill="#f472b6" />
+  <circle cx="150" cy="58" r="5" fill="#a78bfa" />
+  <circle cx="200" cy="40" r="6" fill="#fde047" />
+  <circle cx="250" cy="58" r="5" fill="#f472b6" />
+  <circle cx="300" cy="66" r="5" fill="#a78bfa" />
+  <circle cx="350" cy="58" r="5" fill="#fde047" />
+  
+  <!-- Dance Caricature Illustration -->
+  <g transform="translate(200, 215) scale(0.95)">
+    <!-- Groom Avatar Dancing in Navy Suit -->
+    <g transform="translate(-50, -35) rotate(-6)">
+      <path d="M-25,-30 Q0,-55 25,-30 Q30,-10 20,10 Q0,20 -20,10 Z" fill="#020617" />
+      <path d="M-18,-15 Q0,-25 18,-15 Q22,15 0,30 Q-22,15 -18,-15 Z" fill="#fbcfe8" />
+      <circle cx="-7" cy="-2" r="2.5" fill="#0f172a" />
+      <circle cx="7" cy="-2" r="2.5" fill="#0f172a" />
+      <path d="M-7,10 Q0,18 7,10" fill="none" stroke="#991b1b" stroke-width="2.5" stroke-linecap="round" />
+      <path d="M-30,30 L30,30 L35,80 L-35,80 Z" fill="#1e1b4b" />
+      <path d="M-8,30 L0,55 L8,30 Z" fill="#f472b6" />
+    </g>
+    
+    <!-- Bride Avatar Dancing in Pink Lehenga -->
+    <g transform="translate(50, -30) rotate(6)">
+      <path d="M-25,-25 Q0,-50 25,-25 Q30,-5 20,15 Q0,25 -20,15 Z" fill="#020617" />
+      <path d="M-18,-12 Q0,-22 18,-12 Q20,16 0,28 Q-20,16 -18,-12 Z" fill="#fbcfe8" />
+      <circle cx="0" cy="-10" r="2.5" fill="#dc2626" />
+      <circle cx="-7" cy="-1" r="2.5" fill="#0f172a" />
+      <circle cx="7" cy="-1" r="2.5" fill="#0f172a" />
+      <path d="M-7,11 Q0,19 7,11" fill="none" stroke="#991b1b" stroke-width="2.5" stroke-linecap="round" />
+      <path d="M-28,28 L28,28 L35,80 L-35,80 Z" fill="#f472b6" />
+      <path d="M-15,28 L20,80 L28,80 L-5,28 Z" fill="url(#violet)" />
+    </g>
+    
+    <!-- Musical Notes floating -->
+    <text x="-90" y="-10" font-size="20" fill="#fde047" opacity="0.85">♪</text>
+    <text x="80" y="-20" font-size="22" fill="#f472b6" opacity="0.85">♫</text>
+    <text x="-70" y="80" font-size="18" fill="#a78bfa" opacity="0.85">♬</text>
+  </g>
+  
+  <!-- Banner Text -->
+  <rect x="60" y="380" width="280" height="46" rx="23" fill="rgba(15, 10, 35, 0.9)" stroke="url(#violet)" stroke-width="1.5" />
+  <text x="200" y="408" font-family="serif" font-size="16" font-weight="bold" fill="#c4b5fd" text-anchor="middle" letter-spacing="3">MUSIC &amp; MEMORIES</text>
+  <text x="200" y="450" font-family="sans-serif" font-size="12" fill="#f472b6" text-anchor="middle" letter-spacing="2">FESTIVE NIGHT</text>
+</svg>
