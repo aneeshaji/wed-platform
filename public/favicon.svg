@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a78bfa" />
+      <stop offset="0.5" stop-color="#f472b6" />
+      <stop offset="1" stop-color="#fbbf24" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="url(#g)" />
+  <text
+    x="21"
+    y="43"
+    text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', 'Nimbus Roman No9 L', serif"
+    font-size="27"
+    font-weight="700"
+    fill="#190826"
+  >
+    S
+  </text>
+  <text
+    x="43"
+    y="43"
+    text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', 'Nimbus Roman No9 L', serif"
+    font-size="27"
+    font-weight="700"
+    fill="#190826"
+  >
+    S
+  </text>
+  <path d="M32 24 L34.6 32.4 L32 41 L29.4 32.4 Z" fill="#190826" />
+</svg>
