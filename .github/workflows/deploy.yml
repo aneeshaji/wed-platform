@@ -31,8 +31,10 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          port: ${{ secrets.FTP_PORT || 21 }}
+          port: 21
+          security: loose
           timeout: 60000
           server-dir: ${{ secrets.FTP_SERVER_DIR || 'sneha-sarath.wed.framezlabs.store/' }}
           local-dir: ./dist/
           dangerous-clean-slate: false
+          log-level: verbose
