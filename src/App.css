@@ -2130,11 +2130,13 @@ body {
 
 /* ---------- Responsive ---------- */
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .hero {
     grid-template-columns: 1fr;
     min-height: auto;
     padding-top: 110px;
+    padding-left: clamp(16px, 4vw, 32px);
+    padding-right: clamp(16px, 4vw, 32px);
     text-align: center;
   }
 
@@ -2143,43 +2145,66 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    width: 100%;
+    margin: 0 auto;
   }
 
   .hero-title {
     justify-content: center;
+    text-align: center;
+    width: 100%;
   }
 
   .hero-date {
     justify-content: center;
+    width: 100%;
   }
 
   .hero-lead {
     margin-inline: auto;
+    text-align: center;
   }
 
   .hero-cta {
     justify-content: center;
+    width: 100%;
   }
 
   .hero-visual {
     min-height: auto;
     margin: 28px auto 0;
     width: 100%;
+    max-width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .float-shape {
+    display: none;
+  }
+
+  .float-chip {
+    display: none;
   }
 
   .medallion {
-    width: min(340px, 84vw);
-    height: min(340px, 84vw);
+    width: min(310px, 80vw);
+    height: min(310px, 80vw);
     margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .medallion::before {
+    inset: -8px;
   }
 
   .medallion-caricature-frame {
-    width: min(280px, 70vw);
-    height: min(280px, 70vw);
+    width: min(260px, 68vw);
+    height: min(260px, 68vw);
     margin: 0 auto;
+    box-sizing: border-box;
   }
 }
 
@@ -2206,7 +2231,7 @@ body {
   }
 
   .hero-title {
-    font-size: clamp(2.6rem, 12vw, 4.2rem);
+    font-size: clamp(2.5rem, 11vw, 3.8rem);
   }
 
   .hero-date {
@@ -2219,19 +2244,15 @@ body {
     display: none;
   }
 
-  .float-chip {
-    display: none;
-  }
-
   .medallion {
-    width: min(300px, 82vw);
-    height: min(300px, 82vw);
+    width: min(280px, 78vw);
+    height: min(280px, 78vw);
     margin: 0 auto;
   }
 
   .medallion-caricature-frame {
-    width: min(250px, 68vw);
-    height: min(250px, 68vw);
+    width: min(235px, 65vw);
+    height: min(235px, 65vw);
     margin: 0 auto;
   }
 
