@@ -2131,12 +2131,17 @@ body {
 /* ---------- Responsive ---------- */
 
 @media (max-width: 1024px) {
+  /* Switch from grid to flex-column so hero-visual is never in a right column */
   .hero {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     min-height: auto;
     padding-top: 110px;
-    padding-left: clamp(16px, 4vw, 32px);
-    padding-right: clamp(16px, 4vw, 32px);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 60px;
+    gap: 32px;
     text-align: center;
   }
 
@@ -2146,7 +2151,6 @@ body {
     align-items: center;
     text-align: center;
     width: 100%;
-    margin: 0 auto;
   }
 
   .hero-title {
@@ -2161,7 +2165,8 @@ body {
   }
 
   .hero-lead {
-    margin-inline: auto;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
   }
 
@@ -2170,43 +2175,46 @@ body {
     width: 100%;
   }
 
+  /* Force hero-visual to be full-width centered block */
   .hero-visual {
-    min-height: auto;
-    margin: 28px auto 0;
+    position: relative;
     width: 100%;
-    max-width: 100%;
+    min-height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
+    left: unset;
+    right: unset;
+    margin: 0;
   }
 
-  .float-shape {
-    display: none;
-  }
-
+  /* Hide decorative floating elements that push layout off-center */
+  .float-shape,
   .float-chip {
-    display: none;
+    display: none !important;
   }
 
+  /* Size medallion to viewport, force center */
   .medallion {
-    width: min(310px, 80vw);
-    height: min(310px, 80vw);
+    position: relative;
+    width: min(300px, 76vw);
+    height: min(300px, 76vw);
     margin: 0 auto;
-    box-sizing: border-box;
+    left: auto;
+    right: auto;
   }
 
   .medallion::before {
-    inset: -8px;
+    inset: -6px;
   }
 
   .medallion-caricature-frame {
-    width: min(260px, 68vw);
-    height: min(260px, 68vw);
+    width: min(252px, 64vw);
+    height: min(252px, 64vw);
     margin: 0 auto;
-    box-sizing: border-box;
   }
 }
+
 
 @media (max-width: 880px) {
   .topnav,
