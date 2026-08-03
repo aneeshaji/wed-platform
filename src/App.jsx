@@ -1086,9 +1086,7 @@ function App() {
       </button>
 
       {/* ── Floating music player ── */}
-      <audio ref={audioRef} loop preload="auto">
-        <source src="/audio/background.webm" type="audio/webm" />
-      </audio>
+      <audio ref={audioRef} src="/audio/background.mp3" loop preload="auto" />
       <button
         className={`music-btn${musicPlaying ? ' music-btn--playing' : ''}`}
         type="button"
