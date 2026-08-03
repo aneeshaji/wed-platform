@@ -405,6 +405,7 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [lightbox, setLightbox] = useState(null)
   const [openFaq, setOpenFaq] = useState(null)
+  const countdown = useCountdown(weddingTarget)
   const audioRef = useRef(null)
   const [musicPlaying, setMusicPlaying] = useState(true)
 
