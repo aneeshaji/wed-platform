@@ -471,29 +471,21 @@ function App() {
     const audio = audioRef.current
     if (!audio) return
     if (musicPlaying) {
-      // Fade out then pause
-      let vol = audio.volume
-      const fade = setInterval(() => {
-        vol = Math.max(vol - 0.03, 0)
-        audio.volume = vol
-        if (vol <= 0) {
-          clearInterval(fade)
-          audio.pause()
-          setMusicPlaying(false)
-        }
-      }, 60)
+      audio.pause()
+      setMusicPlaying(false)
     } else {
-      audio.volume = 0
-      audio.play().then(() => {
-        setMusicPlaying(true)
-        setMusicStarted(true)
-        let vol = 0
-        const fade = setInterval(() => {
-          vol = Math.min(vol + 0.02, 0.35)
-          audio.volume = vol
-          if (vol >= 0.35) clearInterval(fade)
-        }, 80)
-      }).catch(() => {})
+      audio.volume = 0.5
+      const promise = audio.play()
+      if (promise !== undefined) {
+        promise
+          .then(() => {
+            setMusicPlaying(true)
+            setMusicStarted(true)
+          })
+          .catch((err) => {
+            console.error('Playback error:', err)
+          })
+      }
     }
   }
 
@@ -1090,7 +1082,7 @@ function App() {
       </button>
 
       {/* ── Floating music player ── */}
-      <audio ref={audioRef} src="/audio/background.mp3" loop preload="none" />
+      <audio ref={audioRef} src="/audio/background.mp3" loop preload="auto" />
       <button
         className={`music-btn${musicPlaying ? ' music-btn--playing' : ''}`}
         type="button"
