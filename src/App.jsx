@@ -407,6 +407,7 @@ function App() {
   const [openFaq, setOpenFaq] = useState(null)
   const countdown = useCountdown(weddingTarget)
   const audioRef = useRef(null)
+  const userMutedRef = useRef(false)
   const [musicPlaying, setMusicPlaying] = useState(true)
 
   const T = L[lang]
@@ -442,43 +443,56 @@ function App() {
     audio.volume = 0.5
 
     const attemptPlay = () => {
-      if (!audioRef.current) return
+      if (!audioRef.current || userMutedRef.current) return
       audioRef.current
         .play()
         .then(() => {
           setMusicPlaying(true)
+          removeListeners()
         })
         .catch(() => {
           /* Autoplay blocked until gesture */
         })
     }
 
-    attemptPlay()
-
     const onUserInteraction = () => {
+      if (userMutedRef.current) {
+        removeListeners()
+        return
+      }
       if (audioRef.current && audioRef.current.paused) {
         attemptPlay()
       }
     }
+
+    const removeListeners = () => {
+      window.removeEventListener('click', onUserInteraction)
+      window.removeEventListener('touchstart', onUserInteraction)
+      window.removeEventListener('scroll', onUserInteraction)
+    }
+
+    attemptPlay()
 
     window.addEventListener('click', onUserInteraction, { passive: true })
     window.addEventListener('touchstart', onUserInteraction, { passive: true })
     window.addEventListener('scroll', onUserInteraction, { passive: true })
 
     return () => {
-      window.removeEventListener('click', onUserInteraction)
-      window.removeEventListener('touchstart', onUserInteraction)
-      window.removeEventListener('scroll', onUserInteraction)
+      removeListeners()
     }
   }, [])
 
-  const toggleMusic = () => {
+  const toggleMusic = (e) => {
+    if (e) e.stopPropagation()
     const audio = audioRef.current
     if (!audio) return
+
     if (musicPlaying) {
+      userMutedRef.current = true
       audio.pause()
       setMusicPlaying(false)
     } else {
+      userMutedRef.current = false
       audio.volume = 0.5
       const promise = audio.play()
       if (promise !== undefined) {
