@@ -405,10 +405,8 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [lightbox, setLightbox] = useState(null)
   const [openFaq, setOpenFaq] = useState(null)
-  const countdown = useCountdown(weddingTarget)
   const audioRef = useRef(null)
-  const [musicPlaying, setMusicPlaying] = useState(false)
-  const [musicStarted, setMusicStarted] = useState(false)
+  const [musicPlaying, setMusicPlaying] = useState(true)
 
   const T = L[lang]
   const tr = (o) => (lang === 'ml' ? o.ml : o.en)
@@ -435,37 +433,43 @@ function App() {
     }
   }, [menuOpen, lightbox])
 
-  // Auto-start music on first user interaction (browsers block autoplay until then)
+  // Try playing audio immediately, or trigger on first gesture (touch/scroll/click) if browser blocks autoplay
   useEffect(() => {
-    const startOnInteraction = () => {
-      if (musicStarted) return
-      const audio = audioRef.current
-      if (!audio) return
-      audio.volume = 0
-      audio.play().then(() => {
-        setMusicPlaying(true)
-        setMusicStarted(true)
-        // Fade in gradually
-        let vol = 0
-        const fade = setInterval(() => {
-          vol = Math.min(vol + 0.02, 0.35)
-          audio.volume = vol
-          if (vol >= 0.35) clearInterval(fade)
-        }, 80)
-      }).catch(() => { /* autoplay blocked */ })
-      document.removeEventListener('click', startOnInteraction)
-      document.removeEventListener('touchstart', startOnInteraction)
-      document.removeEventListener('keydown', startOnInteraction)
+    const audio = audioRef.current
+    if (!audio) return
+
+    audio.volume = 0.5
+
+    const attemptPlay = () => {
+      if (!audioRef.current) return
+      audioRef.current
+        .play()
+        .then(() => {
+          setMusicPlaying(true)
+        })
+        .catch(() => {
+          /* Autoplay blocked until gesture */
+        })
     }
-    document.addEventListener('click', startOnInteraction, { once: true })
-    document.addEventListener('touchstart', startOnInteraction, { once: true })
-    document.addEventListener('keydown', startOnInteraction, { once: true })
+
+    attemptPlay()
+
+    const onUserInteraction = () => {
+      if (audioRef.current && audioRef.current.paused) {
+        attemptPlay()
+      }
+    }
+
+    window.addEventListener('click', onUserInteraction, { passive: true })
+    window.addEventListener('touchstart', onUserInteraction, { passive: true })
+    window.addEventListener('scroll', onUserInteraction, { passive: true })
+
     return () => {
-      document.removeEventListener('click', startOnInteraction)
-      document.removeEventListener('touchstart', startOnInteraction)
-      document.removeEventListener('keydown', startOnInteraction)
+      window.removeEventListener('click', onUserInteraction)
+      window.removeEventListener('touchstart', onUserInteraction)
+      window.removeEventListener('scroll', onUserInteraction)
     }
-  }, [musicStarted])
+  }, [])
 
   const toggleMusic = () => {
     const audio = audioRef.current
@@ -480,7 +484,6 @@ function App() {
         promise
           .then(() => {
             setMusicPlaying(true)
-            setMusicStarted(true)
           })
           .catch((err) => {
             console.error('Playback error:', err)
