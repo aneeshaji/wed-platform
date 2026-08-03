@@ -15,6 +15,8 @@ import {
   HelpIcon,
   MapPinIcon,
   MenuIcon,
+  MusicIcon,
+  MusicMutedIcon,
   PhoneIcon,
   PlaneIcon,
   RingsIcon,
@@ -404,6 +406,9 @@ function App() {
   const [lightbox, setLightbox] = useState(null)
   const [openFaq, setOpenFaq] = useState(null)
   const countdown = useCountdown(weddingTarget)
+  const audioRef = useRef(null)
+  const [musicPlaying, setMusicPlaying] = useState(false)
+  const [musicStarted, setMusicStarted] = useState(false)
 
   const T = L[lang]
   const tr = (o) => (lang === 'ml' ? o.ml : o.en)
@@ -429,6 +434,68 @@ function App() {
       document.body.style.overflow = ''
     }
   }, [menuOpen, lightbox])
+
+  // Auto-start music on first user interaction (browsers block autoplay until then)
+  useEffect(() => {
+    const startOnInteraction = () => {
+      if (musicStarted) return
+      const audio = audioRef.current
+      if (!audio) return
+      audio.volume = 0
+      audio.play().then(() => {
+        setMusicPlaying(true)
+        setMusicStarted(true)
+        // Fade in gradually
+        let vol = 0
+        const fade = setInterval(() => {
+          vol = Math.min(vol + 0.02, 0.35)
+          audio.volume = vol
+          if (vol >= 0.35) clearInterval(fade)
+        }, 80)
+      }).catch(() => { /* autoplay blocked */ })
+      document.removeEventListener('click', startOnInteraction)
+      document.removeEventListener('touchstart', startOnInteraction)
+      document.removeEventListener('keydown', startOnInteraction)
+    }
+    document.addEventListener('click', startOnInteraction, { once: true })
+    document.addEventListener('touchstart', startOnInteraction, { once: true })
+    document.addEventListener('keydown', startOnInteraction, { once: true })
+    return () => {
+      document.removeEventListener('click', startOnInteraction)
+      document.removeEventListener('touchstart', startOnInteraction)
+      document.removeEventListener('keydown', startOnInteraction)
+    }
+  }, [musicStarted])
+
+  const toggleMusic = () => {
+    const audio = audioRef.current
+    if (!audio) return
+    if (musicPlaying) {
+      // Fade out then pause
+      let vol = audio.volume
+      const fade = setInterval(() => {
+        vol = Math.max(vol - 0.03, 0)
+        audio.volume = vol
+        if (vol <= 0) {
+          clearInterval(fade)
+          audio.pause()
+          setMusicPlaying(false)
+        }
+      }, 60)
+    } else {
+      audio.volume = 0
+      audio.play().then(() => {
+        setMusicPlaying(true)
+        setMusicStarted(true)
+        let vol = 0
+        const fade = setInterval(() => {
+          vol = Math.min(vol + 0.02, 0.35)
+          audio.volume = vol
+          if (vol >= 0.35) clearInterval(fade)
+        }, 80)
+      }).catch(() => {})
+    }
+  }
 
   const shareInvite = async () => {
     const url = window.location.href
@@ -1020,6 +1087,19 @@ function App() {
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
         <ArrowUpIcon size={18} />
+      </button>
+
+      {/* ── Floating music player ── */}
+      <audio ref={audioRef} src="/audio/background.mp3" loop preload="none" />
+      <button
+        className={`music-btn${musicPlaying ? ' music-btn--playing' : ''}`}
+        type="button"
+        aria-label={musicPlaying ? 'Pause background music' : 'Play background music'}
+        onClick={toggleMusic}
+      >
+        <span className="music-btn-rings" aria-hidden="true" />
+        {musicPlaying ? <MusicIcon size={18} /> : <MusicMutedIcon size={18} />}
+        <span className="music-btn-label">{musicPlaying ? 'Music On' : 'Music Off'}</span>
       </button>
 
 

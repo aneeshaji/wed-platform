@@ -117,6 +117,17 @@ export function MusicIcon({ size = 18, className }) {
   )
 }
 
+export function MusicMutedIcon({ size = 18, className }) {
+  return (
+    <svg {...base(size, className)}>
+      <path d="M9 18V5l12-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="18" cy="16" r="3" />
+      <line x1="2" y1="2" x2="22" y2="22" />
+    </svg>
+  )
+}
+
 export function ShareIcon({ size = 18, className }) {
   return (
     <svg {...base(size, className)}>
