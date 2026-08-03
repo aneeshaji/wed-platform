@@ -2233,6 +2233,20 @@ body {
     margin: 0 auto !important;
     box-sizing: border-box !important;
   }
+
+  .story-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .story-lede {
+    max-width: 100% !important;
+  }
+
+  .story-quote {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
 }
 
 @media (max-width: 880px) {
