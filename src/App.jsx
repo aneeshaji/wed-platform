@@ -408,7 +408,7 @@ function App() {
   const countdown = useCountdown(weddingTarget)
   const audioRef = useRef(null)
   const userMutedRef = useRef(false)
-  const [musicPlaying, setMusicPlaying] = useState(true)
+  const [musicPlaying, setMusicPlaying] = useState(false)
 
   const T = L[lang]
   const tr = (o) => (lang === 'ml' ? o.ml : o.en)
@@ -435,51 +435,51 @@ function App() {
     }
   }, [menuOpen, lightbox])
 
-  // Try playing audio immediately, or trigger on first gesture (touch/scroll/click) if browser blocks autoplay
+  // Muted autoplay trick: browsers always allow muted autoplay.
+  // We start muted, then unmute after a short delay so music plays on page load.
   useEffect(() => {
     const audio = audioRef.current
     if (!audio) return
 
+    audio.muted = true
     audio.volume = 0.5
 
-    const attemptPlay = () => {
-      if (!audioRef.current || userMutedRef.current) return
-      audioRef.current
+    const startMuted = () => {
+      audio
         .play()
         .then(() => {
-          setMusicPlaying(true)
-          removeListeners()
+          // Successfully playing muted — now unmute smoothly
+          setTimeout(() => {
+            if (!userMutedRef.current && audioRef.current) {
+              audioRef.current.muted = false
+              setMusicPlaying(true)
+            }
+          }, 300)
         })
         .catch(() => {
-          /* Autoplay blocked until gesture */
+          // Even muted autoplay failed — wait for first user gesture
+          const onFirstGesture = () => {
+            if (userMutedRef.current) return
+            const a = audioRef.current
+            if (!a) return
+            a.muted = true
+            a.play()
+              .then(() => {
+                a.muted = false
+                setMusicPlaying(true)
+              })
+              .catch(() => {})
+            document.removeEventListener('click', onFirstGesture)
+            document.removeEventListener('touchstart', onFirstGesture)
+            document.removeEventListener('scroll', onFirstGesture)
+          }
+          document.addEventListener('click', onFirstGesture, { once: true, passive: true })
+          document.addEventListener('touchstart', onFirstGesture, { once: true, passive: true })
+          document.addEventListener('scroll', onFirstGesture, { once: true, passive: true })
         })
     }
 
-    const onUserInteraction = () => {
-      if (userMutedRef.current) {
-        removeListeners()
-        return
-      }
-      if (audioRef.current && audioRef.current.paused) {
-        attemptPlay()
-      }
-    }
-
-    const removeListeners = () => {
-      window.removeEventListener('click', onUserInteraction)
-      window.removeEventListener('touchstart', onUserInteraction)
-      window.removeEventListener('scroll', onUserInteraction)
-    }
-
-    attemptPlay()
-
-    window.addEventListener('click', onUserInteraction, { passive: true })
-    window.addEventListener('touchstart', onUserInteraction, { passive: true })
-    window.addEventListener('scroll', onUserInteraction, { passive: true })
-
-    return () => {
-      removeListeners()
-    }
+    startMuted()
   }, [])
 
   const toggleMusic = (e) => {
@@ -1100,7 +1100,7 @@ function App() {
       </button>
 
       {/* ── Floating music player ── */}
-      <audio ref={audioRef} src="/audio/background.mp3" loop autoPlay preload="auto" />
+      <audio ref={audioRef} src="/audio/background.mp3" loop muted preload="auto" />
       <button
         className={`music-btn${musicPlaying ? ' music-btn--playing' : ''}`}
         type="button"
