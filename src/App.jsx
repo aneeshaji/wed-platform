@@ -435,51 +435,58 @@ function App() {
     }
   }, [menuOpen, lightbox])
 
-  // Auto-play music on mount & first gesture (scroll/touch/click/pointer)
+  // Auto-play music on page load without requiring user click (muted autoplay -> instant unmute)
   useEffect(() => {
     const audio = audioRef.current
     if (!audio) return
 
     audio.volume = 0.5
-    audio.muted = false
 
-    const playAudio = () => {
+    const unmuteAndPlay = () => {
       if (!audioRef.current || userMutedRef.current) return
-      audioRef.current
-        .play()
+      audioRef.current.muted = false
+      audioRef.current.volume = 0.5
+      setMusicPlaying(true)
+    }
+
+    const handlePlaying = () => {
+      unmuteAndPlay()
+    }
+
+    audio.addEventListener('playing', handlePlaying)
+
+    // Attempt immediate play
+    const promise = audio.play()
+    if (promise !== undefined) {
+      promise
         .then(() => {
-          setMusicPlaying(true)
-          cleanup()
+          unmuteAndPlay()
         })
         .catch(() => {
-          /* Waiting for user gesture */
+          /* Fallback on scroll/touch/mousemove if browser strictly delays un-muting */
         })
     }
 
-    const onGesture = () => {
-      if (userMutedRef.current) {
-        cleanup()
-        return
+    const onAnyActivity = () => {
+      if (userMutedRef.current) return
+      if (audioRef.current) {
+        audioRef.current.muted = false
+        audioRef.current.volume = 0.5
+        audioRef.current.play().then(() => setMusicPlaying(true)).catch(() => {})
       }
-      playAudio()
     }
 
-    const cleanup = () => {
-      window.removeEventListener('click', onGesture)
-      window.removeEventListener('touchstart', onGesture)
-      window.removeEventListener('scroll', onGesture)
-      window.removeEventListener('pointerdown', onGesture)
-    }
-
-    playAudio()
-
-    window.addEventListener('click', onGesture, { passive: true })
-    window.addEventListener('touchstart', onGesture, { passive: true })
-    window.addEventListener('scroll', onGesture, { passive: true })
-    window.addEventListener('pointerdown', onGesture, { passive: true })
+    window.addEventListener('scroll', onAnyActivity, { passive: true })
+    window.addEventListener('touchstart', onAnyActivity, { passive: true })
+    window.addEventListener('mousemove', onAnyActivity, { passive: true })
+    window.addEventListener('pointerdown', onAnyActivity, { passive: true })
 
     return () => {
-      cleanup()
+      audio.removeEventListener('playing', handlePlaying)
+      window.removeEventListener('scroll', onAnyActivity)
+      window.removeEventListener('touchstart', onAnyActivity)
+      window.removeEventListener('mousemove', onAnyActivity)
+      window.removeEventListener('pointerdown', onAnyActivity)
     }
   }, [])
 
@@ -1095,7 +1102,7 @@ function App() {
       </button>
 
       {/* ── Floating music player ── */}
-      <audio ref={audioRef} src="/audio/background.mp3" loop autoPlay preload="auto" />
+      <audio ref={audioRef} src="/audio/background.mp3" loop autoPlay playsInline muted preload="auto" />
       <button
         className={`music-btn${musicPlaying ? ' music-btn--playing' : ''}`}
         type="button"
