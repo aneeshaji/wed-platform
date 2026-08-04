@@ -442,7 +442,7 @@ function App() {
     audio.volume = 0.5
     audio.muted = false
 
-    const startPlaying = () => {
+    const attemptPlay = () => {
       if (userMutedRef.current || !audioRef.current) return
       audioRef.current.volume = 0.5
       audioRef.current.muted = false
@@ -450,35 +450,30 @@ function App() {
         .play()
         .then(() => {
           setMusicPlaying(true)
-          removeGestureListeners()
         })
-        .catch(() => {})
+        .catch(() => {
+          /* Pending interaction */
+        })
     }
+
+    attemptPlay()
 
     const onGesture = () => {
-      if (!userMutedRef.current) startPlaying()
+      if (!userMutedRef.current && audioRef.current && audioRef.current.paused) {
+        attemptPlay()
+      }
     }
 
-    const removeGestureListeners = () => {
-      window.removeEventListener('touchstart', onGesture)
-      window.removeEventListener('pointerdown', onGesture)
-      window.removeEventListener('scroll', onGesture)
-      window.removeEventListener('click', onGesture)
-      window.removeEventListener('mousemove', onGesture)
-    }
-
-    // Try immediately on page load
-    startPlaying()
-
-    // Fallback listeners for strict browser autoplay rules
     window.addEventListener('touchstart', onGesture, { passive: true })
     window.addEventListener('pointerdown', onGesture, { passive: true })
     window.addEventListener('scroll', onGesture, { passive: true })
     window.addEventListener('click', onGesture, { passive: true })
-    window.addEventListener('mousemove', onGesture, { passive: true })
 
     return () => {
-      removeGestureListeners()
+      window.removeEventListener('touchstart', onGesture)
+      window.removeEventListener('pointerdown', onGesture)
+      window.removeEventListener('scroll', onGesture)
+      window.removeEventListener('click', onGesture)
     }
   }, [])
 
@@ -487,17 +482,17 @@ function App() {
     const audio = audioRef.current
     if (!audio) return
 
-    if (musicPlaying) {
-      userMutedRef.current = true
-      audio.pause()
-      setMusicPlaying(false)
-    } else {
+    if (audio.paused) {
       userMutedRef.current = false
       audio.muted = false
       audio.volume = 0.5
       audio.play()
         .then(() => setMusicPlaying(true))
         .catch((err) => console.error('Playback error:', err))
+    } else {
+      userMutedRef.current = true
+      audio.pause()
+      setMusicPlaying(false)
     }
   }
 
@@ -1094,7 +1089,7 @@ function App() {
       </button>
 
       {/* ── Floating music player ── */}
-      <audio ref={audioRef} src="/audio/background.mp3" loop autoPlay playsInline muted preload="auto" />
+      <audio ref={audioRef} src="/audio/background.mp3" loop autoPlay playsInline preload="auto" />
       <button
         className={`music-btn${musicPlaying ? ' music-btn--playing' : ''}`}
         type="button"
