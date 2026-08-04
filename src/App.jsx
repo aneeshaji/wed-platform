@@ -407,8 +407,8 @@ function App() {
   const [openFaq, setOpenFaq] = useState(null)
   const countdown = useCountdown(weddingTarget)
   const audioRef = useRef(null)
-  const [musicPlaying, setMusicPlaying] = useState(false)
-  const [splashVisible, setSplashVisible] = useState(true)
+  const userMutedRef = useRef(false)
+  const [musicPlaying, setMusicPlaying] = useState(true)
 
   const T = L[lang]
   const tr = (o) => (lang === 'ml' ? o.ml : o.en)
@@ -429,23 +429,59 @@ function App() {
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen || lightbox !== null || splashVisible ? 'hidden' : ''
+    document.body.style.overflow = menuOpen || lightbox !== null ? 'hidden' : ''
     return () => {
       document.body.style.overflow = ''
     }
-  }, [menuOpen, lightbox, splashVisible])
+  }, [menuOpen, lightbox])
 
-  const enterSite = () => {
-    setSplashVisible(false)
+  // Auto-play music on mount & first gesture (scroll/touch/click/pointer)
+  useEffect(() => {
     const audio = audioRef.current
-    if (audio) {
-      audio.volume = 0.5
-      audio.muted = false
-      audio.play()
-        .then(() => setMusicPlaying(true))
-        .catch(() => {})
+    if (!audio) return
+
+    audio.volume = 0.5
+    audio.muted = false
+
+    const playAudio = () => {
+      if (!audioRef.current || userMutedRef.current) return
+      audioRef.current
+        .play()
+        .then(() => {
+          setMusicPlaying(true)
+          cleanup()
+        })
+        .catch(() => {
+          /* Waiting for user gesture */
+        })
     }
-  }
+
+    const onGesture = () => {
+      if (userMutedRef.current) {
+        cleanup()
+        return
+      }
+      playAudio()
+    }
+
+    const cleanup = () => {
+      window.removeEventListener('click', onGesture)
+      window.removeEventListener('touchstart', onGesture)
+      window.removeEventListener('scroll', onGesture)
+      window.removeEventListener('pointerdown', onGesture)
+    }
+
+    playAudio()
+
+    window.addEventListener('click', onGesture, { passive: true })
+    window.addEventListener('touchstart', onGesture, { passive: true })
+    window.addEventListener('scroll', onGesture, { passive: true })
+    window.addEventListener('pointerdown', onGesture, { passive: true })
+
+    return () => {
+      cleanup()
+    }
+  }, [])
 
   const toggleMusic = (e) => {
     if (e) e.stopPropagation()
@@ -453,9 +489,11 @@ function App() {
     if (!audio) return
 
     if (musicPlaying) {
+      userMutedRef.current = true
       audio.pause()
       setMusicPlaying(false)
     } else {
+      userMutedRef.current = false
       audio.volume = 0.5
       audio.muted = false
       audio.play()
@@ -564,19 +602,6 @@ function App() {
 
   return (
     <div className="page" ref={pageRef}>
-      {/* ── Welcome Splash — tapping this starts music ── */}
-      {splashVisible && (
-        <div className="splash-overlay" onClick={enterSite}>
-          <div className="splash-content">
-            <span className="splash-rings" aria-hidden="true">💍</span>
-            <h2 className="splash-names">Sneha <span className="splash-amp">&</span> Sarathraj</h2>
-            <p className="splash-date">13 · 09 · 2026</p>
-            <button className="splash-btn" type="button" onClick={enterSite}>
-              {lang === 'ml' ? 'ക്ഷണക്കത്ത് തുറക്കുക' : 'Open Invitation'}
-            </button>
-          </div>
-        </div>
-      )}
       <div className="grain" aria-hidden="true" />
       <div className="aurora aurora--a" aria-hidden="true" />
       <div className="aurora aurora--b" aria-hidden="true" />
