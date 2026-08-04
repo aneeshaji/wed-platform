@@ -408,7 +408,7 @@ function App() {
   const countdown = useCountdown(weddingTarget)
   const audioRef = useRef(null)
   const userMutedRef = useRef(false)
-  const [musicPlaying, setMusicPlaying] = useState(true)
+  const [musicPlaying, setMusicPlaying] = useState(false)
 
   const T = L[lang]
   const tr = (o) => (lang === 'ml' ? o.ml : o.en)
@@ -435,58 +435,46 @@ function App() {
     }
   }, [menuOpen, lightbox])
 
-  // Auto-play music on page load without requiring user click (muted autoplay -> instant unmute)
   useEffect(() => {
     const audio = audioRef.current
     if (!audio) return
 
-    audio.volume = 0.5
-
-    const unmuteAndPlay = () => {
-      if (!audioRef.current || userMutedRef.current) return
-      audioRef.current.muted = false
-      audioRef.current.volume = 0.5
-      setMusicPlaying(true)
-    }
-
-    const handlePlaying = () => {
-      unmuteAndPlay()
-    }
-
-    audio.addEventListener('playing', handlePlaying)
-
-    // Attempt immediate play
-    const promise = audio.play()
-    if (promise !== undefined) {
-      promise
-        .then(() => {
-          unmuteAndPlay()
-        })
-        .catch(() => {
-          /* Fallback on scroll/touch/mousemove if browser strictly delays un-muting */
-        })
-    }
-
-    const onAnyActivity = () => {
+    const startPlaying = () => {
       if (userMutedRef.current) return
-      if (audioRef.current) {
-        audioRef.current.muted = false
-        audioRef.current.volume = 0.5
-        audioRef.current.play().then(() => setMusicPlaying(true)).catch(() => {})
-      }
+      audio.muted = false
+      audio.volume = 0.5
+      audio
+        .play()
+        .then(() => {
+          setMusicPlaying(true)
+          // once actually playing, remove gesture listeners
+          removeGestureListeners()
+        })
+        .catch(() => {})
     }
 
-    window.addEventListener('scroll', onAnyActivity, { passive: true })
-    window.addEventListener('touchstart', onAnyActivity, { passive: true })
-    window.addEventListener('mousemove', onAnyActivity, { passive: true })
-    window.addEventListener('pointerdown', onAnyActivity, { passive: true })
+    const onGesture = () => {
+      if (!userMutedRef.current) startPlaying()
+    }
+
+    const removeGestureListeners = () => {
+      document.removeEventListener('touchstart', onGesture)
+      document.removeEventListener('pointerdown', onGesture)
+      document.removeEventListener('scroll', onGesture)
+      document.removeEventListener('mousemove', onGesture)
+    }
+
+    // Try immediately (works on desktop Chrome/Edge/Firefox)
+    startPlaying()
+
+    // Fallback: start on very first user interaction (iOS Safari, strict browsers)
+    document.addEventListener('touchstart', onGesture, { once: true, passive: true })
+    document.addEventListener('pointerdown', onGesture, { once: true, passive: true })
+    document.addEventListener('scroll', onGesture, { once: true, passive: true })
+    document.addEventListener('mousemove', onGesture, { once: true, passive: true })
 
     return () => {
-      audio.removeEventListener('playing', handlePlaying)
-      window.removeEventListener('scroll', onAnyActivity)
-      window.removeEventListener('touchstart', onAnyActivity)
-      window.removeEventListener('mousemove', onAnyActivity)
-      window.removeEventListener('pointerdown', onAnyActivity)
+      removeGestureListeners()
     }
   }, [])
 
@@ -495,17 +483,19 @@ function App() {
     const audio = audioRef.current
     if (!audio) return
 
-    if (musicPlaying) {
-      userMutedRef.current = true
-      audio.pause()
-      setMusicPlaying(false)
-    } else {
+    if (audio.paused) {
+      // Audio not playing — start it
       userMutedRef.current = false
-      audio.volume = 0.5
       audio.muted = false
+      audio.volume = 0.5
       audio.play()
         .then(() => setMusicPlaying(true))
         .catch((err) => console.error('Playback error:', err))
+    } else {
+      // Audio playing — pause it
+      userMutedRef.current = true
+      audio.pause()
+      setMusicPlaying(false)
     }
   }
 
