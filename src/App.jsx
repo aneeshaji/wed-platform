@@ -408,7 +408,7 @@ function App() {
   const countdown = useCountdown(weddingTarget)
   const audioRef = useRef(null)
   const userMutedRef = useRef(false)
-  const [musicPlaying, setMusicPlaying] = useState(false)
+  const [musicPlaying, setMusicPlaying] = useState(true)
 
   const T = L[lang]
   const tr = (o) => (lang === 'ml' ? o.ml : o.en)
@@ -439,15 +439,17 @@ function App() {
     const audio = audioRef.current
     if (!audio) return
 
+    audio.volume = 0.5
+    audio.muted = false
+
     const startPlaying = () => {
-      if (userMutedRef.current) return
-      audio.muted = false
-      audio.volume = 0.5
-      audio
+      if (userMutedRef.current || !audioRef.current) return
+      audioRef.current.volume = 0.5
+      audioRef.current.muted = false
+      audioRef.current
         .play()
         .then(() => {
           setMusicPlaying(true)
-          // once actually playing, remove gesture listeners
           removeGestureListeners()
         })
         .catch(() => {})
@@ -458,20 +460,22 @@ function App() {
     }
 
     const removeGestureListeners = () => {
-      document.removeEventListener('touchstart', onGesture)
-      document.removeEventListener('pointerdown', onGesture)
-      document.removeEventListener('scroll', onGesture)
-      document.removeEventListener('mousemove', onGesture)
+      window.removeEventListener('touchstart', onGesture)
+      window.removeEventListener('pointerdown', onGesture)
+      window.removeEventListener('scroll', onGesture)
+      window.removeEventListener('click', onGesture)
+      window.removeEventListener('mousemove', onGesture)
     }
 
-    // Try immediately (works on desktop Chrome/Edge/Firefox)
+    // Try immediately on page load
     startPlaying()
 
-    // Fallback: start on very first user interaction (iOS Safari, strict browsers)
-    document.addEventListener('touchstart', onGesture, { once: true, passive: true })
-    document.addEventListener('pointerdown', onGesture, { once: true, passive: true })
-    document.addEventListener('scroll', onGesture, { once: true, passive: true })
-    document.addEventListener('mousemove', onGesture, { once: true, passive: true })
+    // Fallback listeners for strict browser autoplay rules
+    window.addEventListener('touchstart', onGesture, { passive: true })
+    window.addEventListener('pointerdown', onGesture, { passive: true })
+    window.addEventListener('scroll', onGesture, { passive: true })
+    window.addEventListener('click', onGesture, { passive: true })
+    window.addEventListener('mousemove', onGesture, { passive: true })
 
     return () => {
       removeGestureListeners()
@@ -483,19 +487,17 @@ function App() {
     const audio = audioRef.current
     if (!audio) return
 
-    if (audio.paused) {
-      // Audio not playing — start it
+    if (musicPlaying) {
+      userMutedRef.current = true
+      audio.pause()
+      setMusicPlaying(false)
+    } else {
       userMutedRef.current = false
       audio.muted = false
       audio.volume = 0.5
       audio.play()
         .then(() => setMusicPlaying(true))
         .catch((err) => console.error('Playback error:', err))
-    } else {
-      // Audio playing — pause it
-      userMutedRef.current = true
-      audio.pause()
-      setMusicPlaying(false)
     }
   }
 
