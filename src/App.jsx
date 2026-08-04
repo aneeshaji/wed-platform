@@ -435,45 +435,67 @@ function App() {
     }
   }, [menuOpen, lightbox])
 
+  /*
+   * Background music autoplay.
+   *
+   * Every modern browser (Chrome, Safari, Firefox, iOS/Android) FORBIDS
+   * unmuted audio from auto-starting on a fresh page load — an
+   * anti-interruption platform rule no script can override. The only
+   * autoplay a browser permits is *muted* playback.
+   *
+   * So we: (1) start muted so the track genuinely begins on page load
+   * (silent but already playing/pipelined), and (2) unmute instantly on
+   * the very first user gesture anywhere on the page — no button needed.
+   * The imperatively-set `muted` property is kept OUT of the JSX so React
+   * re-renders never re-mute the element.
+   */
   useEffect(() => {
     const audio = audioRef.current
     if (!audio) return
 
     audio.volume = 0.5
-    audio.muted = false
+    audio.muted = true // start muted so the browser allows autoplay on load
 
-    const attemptPlay = () => {
+    // Trigger the permitted muted autoplay so playback begins (silently)
+    // immediately while the file is still pipelining over the network.
+    audio.play().catch(() => {
+      /* retried on the first gesture below */
+    })
+
+    const start = () => {
       if (userMutedRef.current || !audioRef.current) return
-      audioRef.current.volume = 0.5
-      audioRef.current.muted = false
-      audioRef.current
-        .play()
-        .then(() => {
-          setMusicPlaying(true)
-        })
+      const el = audioRef.current
+      el.muted = false // allowed because this runs inside a user gesture
+      el.volume = 0.5
+      el.play()
+        .then(() => setMusicPlaying(true))
         .catch(() => {
-          /* Pending interaction */
+          /* transient media error — retried on the next gesture */
         })
     }
-
-    attemptPlay()
 
     const onGesture = () => {
-      if (!userMutedRef.current && audioRef.current && audioRef.current.paused) {
-        attemptPlay()
-      }
+      if (!userMutedRef.current) start()
     }
 
+    // NOTE: `scroll` events do NOT bubble. Listening on `window` only catches
+    // the document scrolling — never a sidebar or the mobile viewport. So we
+    // listen in the CAPTURE phase on `document`, which fires for ANY scrollable
+    // element (page body, sidebar/menu, iOS address-bar shift, etc.).
     window.addEventListener('touchstart', onGesture, { passive: true })
     window.addEventListener('pointerdown', onGesture, { passive: true })
-    window.addEventListener('scroll', onGesture, { passive: true })
     window.addEventListener('click', onGesture, { passive: true })
+    window.addEventListener('keydown', onGesture)
+    document.addEventListener('scroll', onGesture, { passive: true, capture: true })
+    window.addEventListener('wheel', onGesture, { passive: true })
 
     return () => {
       window.removeEventListener('touchstart', onGesture)
       window.removeEventListener('pointerdown', onGesture)
-      window.removeEventListener('scroll', onGesture)
       window.removeEventListener('click', onGesture)
+      window.removeEventListener('keydown', onGesture)
+      document.removeEventListener('scroll', onGesture, { capture: true })
+      window.removeEventListener('wheel', onGesture)
     }
   }, [])
 
