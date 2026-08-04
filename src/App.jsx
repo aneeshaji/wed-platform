@@ -407,8 +407,8 @@ function App() {
   const [openFaq, setOpenFaq] = useState(null)
   const countdown = useCountdown(weddingTarget)
   const audioRef = useRef(null)
-  const userMutedRef = useRef(false)
-  const [musicPlaying, setMusicPlaying] = useState(true)
+  const [musicPlaying, setMusicPlaying] = useState(false)
+  const [splashVisible, setSplashVisible] = useState(true)
 
   const T = L[lang]
   const tr = (o) => (lang === 'ml' ? o.ml : o.en)
@@ -429,59 +429,23 @@ function App() {
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen || lightbox !== null ? 'hidden' : ''
+    document.body.style.overflow = menuOpen || lightbox !== null || splashVisible ? 'hidden' : ''
     return () => {
       document.body.style.overflow = ''
     }
-  }, [menuOpen, lightbox])
+  }, [menuOpen, lightbox, splashVisible])
 
-  // Start music automatically on mount, or on first gesture (scroll/touch/click) if browser restricts unmuted autoplay
-  useEffect(() => {
+  const enterSite = () => {
+    setSplashVisible(false)
     const audio = audioRef.current
-    if (!audio) return
-
-    audio.volume = 0.5
-    audio.muted = false
-
-    const playAudio = () => {
-      if (!audioRef.current || userMutedRef.current) return
-      audioRef.current
-        .play()
-        .then(() => {
-          setMusicPlaying(true)
-          cleanup()
-        })
-        .catch(() => {
-          /* Pending user interaction */
-        })
+    if (audio) {
+      audio.volume = 0.5
+      audio.muted = false
+      audio.play()
+        .then(() => setMusicPlaying(true))
+        .catch(() => {})
     }
-
-    const onGesture = () => {
-      if (userMutedRef.current) {
-        cleanup()
-        return
-      }
-      playAudio()
-    }
-
-    const cleanup = () => {
-      window.removeEventListener('click', onGesture)
-      window.removeEventListener('touchstart', onGesture)
-      window.removeEventListener('scroll', onGesture)
-      window.removeEventListener('pointerdown', onGesture)
-    }
-
-    playAudio()
-
-    window.addEventListener('click', onGesture, { passive: true })
-    window.addEventListener('touchstart', onGesture, { passive: true })
-    window.addEventListener('scroll', onGesture, { passive: true })
-    window.addEventListener('pointerdown', onGesture, { passive: true })
-
-    return () => {
-      cleanup()
-    }
-  }, [])
+  }
 
   const toggleMusic = (e) => {
     if (e) e.stopPropagation()
@@ -489,23 +453,14 @@ function App() {
     if (!audio) return
 
     if (musicPlaying) {
-      userMutedRef.current = true
       audio.pause()
       setMusicPlaying(false)
     } else {
-      userMutedRef.current = false
       audio.volume = 0.5
       audio.muted = false
-      const promise = audio.play()
-      if (promise !== undefined) {
-        promise
-          .then(() => {
-            setMusicPlaying(true)
-          })
-          .catch((err) => {
-            console.error('Playback error:', err)
-          })
-      }
+      audio.play()
+        .then(() => setMusicPlaying(true))
+        .catch((err) => console.error('Playback error:', err))
     }
   }
 
@@ -609,6 +564,19 @@ function App() {
 
   return (
     <div className="page" ref={pageRef}>
+      {/* ── Welcome Splash — tapping this starts music ── */}
+      {splashVisible && (
+        <div className="splash-overlay" onClick={enterSite}>
+          <div className="splash-content">
+            <span className="splash-rings" aria-hidden="true">💍</span>
+            <h2 className="splash-names">Sneha <span className="splash-amp">&</span> Sarathraj</h2>
+            <p className="splash-date">13 · 09 · 2026</p>
+            <button className="splash-btn" type="button" onClick={enterSite}>
+              {lang === 'ml' ? 'ക്ഷണക്കത്ത് തുറക്കുക' : 'Open Invitation'}
+            </button>
+          </div>
+        </div>
+      )}
       <div className="grain" aria-hidden="true" />
       <div className="aurora aurora--a" aria-hidden="true" />
       <div className="aurora aurora--b" aria-hidden="true" />
