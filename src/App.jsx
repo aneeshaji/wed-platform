@@ -25,6 +25,7 @@ import {
   TrainIcon,
 } from './icons'
 import { Diya } from './decor'
+import coupleHeroImg from './assets/couple_hero.png'
 import './App.css'
 
 /* ------------------------------------------------------------------
@@ -746,7 +747,7 @@ function App() {
               <div className="medallion-ring" aria-hidden="true" />
               <div className="medallion-caricature-frame">
                 <img
-                  src="/images/couple_hero.png"
+                  src={coupleHeroImg}
                   alt="Sneha &amp; Sarathraj Wedding Portrait"
                   className="caricature-hero-img"
                 />

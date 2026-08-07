@@ -1,4 +1,6 @@
-# Apache Configuration for cPanel SPA Hosting (Vite / React)
+# Apache/LiteSpeed Configuration for cPanel SPA Hosting (Vite / React)
+
+# --- SPA routing: send non-file requests to index.html ---
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
@@ -8,17 +10,37 @@
   RewriteRule . /index.html [L]
 </IfModule>
 
-# Enable Browser Caching & Gzip Compression
+# --- Gzip / Brotli compression ---
 <IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json image/svg+xml
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json application/manifest+json image/svg+xml
 </IfModule>
 
+# --- Browser caching ---
+# Strategy: revalidate the entry HTML on EVERY load so each deployment is picked
+# up immediately; cache hashed Vite assets for 1 year (filenames change per build).
+<IfModule mod_headers.c>
+  # Always re-fetch the app shell -> new hashed asset URLs are discovered instantly
+  <FilesMatch "\.(html?)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  # Hashed build assets: safe to cache for 1 year (immutable names)
+  <FilesMatch "\.(js|css)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Fonts & images bundled under /images (versioned by filename): 1 month
+  <FilesMatch "\.(png|jpg|jpeg|gif|webp|svg|ico|avif|woff2?|ttf)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+</IfModule>
+
+# Fallback Expires for servers/modules where mod_headers is unavailable
 <IfModule mod_expires.c>
   ExpiresActive On
-  ExpiresDefault "access plus 1 month"
   ExpiresByType text/html "access plus 0 seconds"
   ExpiresByType text/css "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
   ExpiresByType application/javascript "access plus 1 year"
-  ExpiresByType image/png "access plus 1 year"
-  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 month"
 </IfModule>
