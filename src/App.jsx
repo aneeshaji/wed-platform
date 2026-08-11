@@ -40,6 +40,7 @@ const {
   venueAddress,
   venueName,
   venueMapEmbed,
+  receptionVenue,
   highlights,
   schedule,
   sparkles,
@@ -675,15 +676,44 @@ function App() {
               </span>
             </div>
           </div>
-          <div className="venue-map" data-reveal>
-            <iframe
-              title={`${venueName} — location on Google Maps`}
-              src={venueMapEmbed}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-            />
-          </div>
+          {receptionVenue ? (
+            <>
+              <div className="venue-map" data-reveal>
+                <span className="venue-map-label">
+                  {T.venueMapLabel} — {venueName}
+                </span>
+                <iframe
+                  title={`${venueName} — location on Google Maps`}
+                  src={venueMapEmbed}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
+              <div className="venue-map" data-reveal>
+                <span className="venue-map-label">
+                  {T.receptionMapLabel} — {receptionVenue.name}
+                </span>
+                <iframe
+                  title={`${receptionVenue.name} — location on Google Maps`}
+                  src={receptionVenue.mapEmbed}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
+            </>
+          ) : (
+            <div className="venue-map" data-reveal>
+              <iframe
+                title={`${venueName} — location on Google Maps`}
+                src={venueMapEmbed}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
+          )}
         </section>
 
         <section className="section schedule" id="schedule">

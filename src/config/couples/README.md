@@ -61,6 +61,7 @@ lifecycle" section of the repo README.
 | `brand.heroAlt` | string | Alt text for the portrait |
 | `weddingTarget` | string | Countdown target, ISO with offset (`2026-09-13T11:55:00+05:30`) |
 | `venueName` / `venueUrl` / `venueAddress` / `venueMapEmbed` | string | Venue card + directions |
+| `receptionVenue` | object (optional) | Second map in the Venue section when the reception is at a different place: `{ name, address, url, mapEmbed }`. Omit if the reception shares the ceremony venue. |
 | `strings.en` / `strings.ml` | object | Couple-specific labels; optional keys fall back to `../base.js` |
 | `highlights` | array | "Details" rows; `icon` is a key from the map below |
 | `schedule` | array | "Schedule" timeline |

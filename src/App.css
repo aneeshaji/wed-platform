@@ -1686,6 +1686,17 @@ body {
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
 }
 
+.venue-map-label {
+  display: block;
+  padding: 14px 20px;
+  font-family: var(--display);
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid var(--line-soft);
+}
+
 .venue-map iframe {
   display: block;
   width: 100%;

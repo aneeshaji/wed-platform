@@ -22,6 +22,12 @@
   "venueUrl": "https://www.google.com/maps/dir//Bhama+Auditorium+Mayyanad,+Ammachanmukku,+Koottikada,+Mayyanad,+Kollam,+Kerala+691020/@8.8607411,76.5606201,11.96z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3b05fb5215b0b769:0x435cb23c7801c41f!2m2!1d76.6366936!2d8.8493243?entry=ttu",
   "venueAddress": "Ammachanmukku, Koottikada, Mayyanad, Kollam, Kerala 691020",
   "venueMapEmbed": "https://www.google.com/maps?q=8.8493233,76.6366936&z=17&output=embed",
+  "receptionVenue": {
+    "name": "Shah Convention Centre",
+    "address": "Mukhamoodimukku, Kollam, Kerala",
+    "url": "https://www.google.com/maps/dir//Shah+Convention+Centre,+Mukhamoodimukku,+Kollam,+Kerala",
+    "mapEmbed": "https://www.google.com/maps?q=Shah+Convention+Centre,+Mukhamoodimukku,+Kollam,+Kerala&z=15&output=embed"
+  },
   "strings": {
     "en": {
       "heroDay": "Sunday",
