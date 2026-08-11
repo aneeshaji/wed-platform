@@ -1,0 +1,32 @@
+{
+  "domain": "wed.framezlabs.store",
+  "schemaVersion": 1,
+  "couples": [
+    {
+      "slug": "sneha-sarath",
+      "version": 1,
+      "status": "live",
+      "serverDir": "sneha-sarath.wed.framezlabs.store/",
+      "site": {
+        "name": "Sneha & Sarathraj",
+        "title": "Sneha & Sarathraj — Wedding Invitation",
+        "description": "Join us to celebrate the wedding of Sneha & Sarathraj on Sunday, 13 September 2026 at 11:55 AM — Bhama Auditorium, Ammachanmukku, Koottikada, Mayyanad, Kollam, Kerala.",
+        "ogUrl": "https://sneha-sarath.wed.framezlabs.store/",
+        "ogImage": "https://sneha-sarath.wed.framezlabs.store/og-sneha-sarath.jpg"
+      }
+    },
+    {
+      "slug": "sarath-sneha",
+      "version": 1,
+      "status": "live",
+      "serverDir": "sarath-sneha.wed.framezlabs.store/",
+      "site": {
+        "name": "Sarathraj & Sneha",
+        "title": "Sarathraj & Sneha — Wedding Invitation",
+        "description": "Join us to celebrate the wedding of Sarathraj & Sneha on Sunday, 13 September 2026 at 11:55 AM — Bhama Auditorium, Ammachanmukku, Koottikada, Mayyanad, Kollam, Kerala.",
+        "ogUrl": "https://sarath-sneha.wed.framezlabs.store/",
+        "ogImage": "https://sarath-sneha.wed.framezlabs.store/og-sarath-sneha.jpg"
+      }
+    }
+  ]
+}

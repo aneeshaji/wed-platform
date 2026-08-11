@@ -80,12 +80,22 @@ One deployment, every guest. No app to install. No login required. Just a beauti
 ## 🚀 Quick Start
 
 ```bash
-npm install       # Install dependencies
-npm run dev       # Start dev server → http://localhost:5173
-npm run build     # Production build → ./dist
-npm run preview   # Preview production build locally
-npm run lint      # Lint with oxlint
+npm install          # Install dependencies
+npm run dev          # Start dev server → http://localhost:5173
+npm run build        # Production build → ./dist
+npm run preview      # Preview production build locally
+npm run check        # Validate couples.json ↔ content folders before pushing
+npm run lint         # Lint with oxlint
+npm run add:couple   # Scaffold a new couple (see "Adding a New Couple")
+npm run migrate:all  # Bring every couple up to the current content schema
+npm run migrate:couple -- <slug>   # Migrate one couple
 ```
+
+> The default couple is the **first entry in `couples.json`**. To serve a
+> specific one: `VITE_COUPLE=<slug> npm run dev`.
+>
+> CI deploys only couples with `"status": "live"` — a new couple stays a
+> local `draft` until you flip it and push.
 
 ---
 
@@ -93,19 +103,35 @@ npm run lint      # Lint with oxlint
 
 ```
 wed.framezlabs.store/
-├── index.html                    # Entry HTML shell
+├── index.html                    # Entry HTML shell — head meta injected at build
+├── couples.json                  # 🧑‍🤝‍🧑 Registry: schemaVersion, slugs, subdomains, versions, statuses, SEO meta
 ├── public/
-│   ├── images/                   # Caricature artworks (PNG / SVG)
+│   ├── images/<slug>/            # Per-couple hero portrait (couple_hero.png)
+│   ├── og-<slug>.jpg             # Per-couple social share image
 │   └── .htaccess                 # Apache SPA routing for cPanel
 ├── src/
-│   ├── App.jsx                   # All content config + full render tree
+│   ├── App.jsx                   # Shared render tree — reads per-couple config
 │   ├── App.css                   # Design system, layout, animations
 │   ├── index.css                 # CSS tokens, palette, fonts, base
 │   ├── icons.jsx                 # Custom SVG icon components
-│   └── decor.jsx                 # Decorative SVG (Diya animations)
+│   ├── decor.jsx                 # Decorative SVG (Diya animations)
+│   └── config/                   # Per-couple content
+│       ├── index.js              # Resolver: manifest + virtual:couple-content (active couple only)
+│       ├── base.js               # Shared UI labels (EN/ML), nav, decorations
+│       └── couples/              # One folder per couple — pure JSON content
+│           ├── _template.json    # Data template ("__SLUG__" placeholders) for new couples
+│           └── <slug>/content.json  # A couple's entire website content
+├── scripts/
+│   ├── add-couple.mjs            # Scaffold a new couple (data + images, `npm run add:couple`)
+│   ├── check.mjs                 # Validate the setup (`npm run check`)
+│   ├── migrate-couple.mjs        # Upgrade couples to the current schema
+│   └── migrations/               # Schema object-transforms (`<from>-to-<to>.mjs`)
+│       ├── README.md             # Contract + lifecycle docs
+│       └── _template.mjs         # Template for the next step
+├── .env                          # Optional VITE_COUPLE override (default = first couple)
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml            # GitHub Actions → cPanel FTP deployment
+│       └── deploy.yml            # GitHub Actions: auto-scaling matrix from couples.json
 ├── dist/                         # Production build output (auto-generated)
 ├── package.json
 └── vite.config.js
@@ -113,28 +139,123 @@ wed.framezlabs.store/
 
 ---
 
-## ⚙️ Customising for a New Couple
+## 🧑‍🤝‍🧑 Adding a New Couple (2nd site, 3rd site, …)
 
-Almost everything is configuration-driven. Open [`src/App.jsx`](src/App.jsx) and update the data at the top of the file:
+This is a **multi-couple platform**: one repo, one shared React app, and one
+couple per subdomain. Each couple is **pure data** — a `content.json` file plus
+their images — no new repo, no duplicated code, no per-couple modules. Fixes
+and features you ship apply to every couple automatically.
 
-| What to change | Where |
-|---|---|
-| Couple's names & hero headline | `splitWord('Sneha')` / `splitWord('Sarathraj')` |
-| Wedding date & countdown | `weddingTarget` constant |
-| All UI strings (EN + ML) | `const L = { en: {…}, ml: {…} }` dictionary |
-| Events, times & venues | `events`, `schedule` arrays |
-| Photo gallery tiles | `galleryTiles` array |
-| Caricature showcase cards | `caricatures` array |
-| Venue map URL & address | `venueUrl`, `venueAddress` |
-| FAQ content | `faqs` array |
-| Travel info | `travelData` array |
-| Colors, fonts, spacing | CSS tokens in `src/index.css` |
+`couples.json` is the **single registration point**: it holds each couple's
+slug, content `version`, lifecycle `status` (`draft` / `live` / `archived`),
+subdomain (`serverDir`) and SEO/share meta (`site`). A Vite plugin serves the
+**active** couple's `content.json` through the `virtual:couple-content` module,
+so each build ships only that couple's data, injects `<head>` meta per couple,
+and the deploy matrix is generated from the same file — nothing in the platform
+code names a specific couple. See [Versioning & lifecycle](#️-versioning--lifecycle)
+below.
+
+### The structure
+
+```
+couples.json                    # Registry: slug, version, status, subdomain + SEO meta
+src/config/
+├── index.js                    # Resolver: manifest + virtual:couple-content (active couple)
+├── base.js                     # Shared UI labels (EN/ML) + nav + decorations
+└── couples/
+    ├── _template.json          # Data template ("__SLUG__" placeholders) for new couples
+    ├── sneha-sarath/
+    │   └── content.json        # Live example — Sneha & Sarathraj (all website content)
+    └── <slug>/                 # 📋 New couples (npm run add:couple -- <slug>)
+        └── content.json
+public/images/<slug>/couple_hero.png   # That couple's hero portrait (referenced by path)
+```
+
+### To add a new couple (6 steps)
+
+1. **Create the subdomain** on cPanel, e.g. `raj-rani.wed.framezlabs.store`
+   (the FTP account deploys there — same FTP credentials work as long as the
+   account can write to the new subdomain's folder).
+
+2. **Scaffold the couple:**
+   ```bash
+   npm run add:couple -- raj-rani
+   ```
+   This copies `_template.json` into `src/config/couples/raj-rani/content.json`,
+   creates `public/images/raj-rani/` for the hero portrait, and registers a
+   placeholder `raj-rani` entry in `couples.json` as a **draft**
+   (`version` = current schema, `status: "draft"`).
+
+3. **Drop in the hero portrait:**
+   `public/images/raj-rani/couple_hero.png` (already referenced by
+   `brand.heroImage` — no import to wire).
+
+4. **Fill in `src/config/couples/raj-rani/content.json`** — names, date, venue,
+   events, FAQ, travel info, and both EN + ML strings. Every field is
+   documented in [`src/config/couples/README.md`](src/config/couples/README.md).
+
+5. **Update the `raj-rani` entry in `couples.json`** — the `site` meta
+   (name, title, description, ogUrl, ogImage) and `serverDir` subdomain.
+   Drop their OG share image in `public/` as `og-raj-rani.jpg`.
+
+6. **Validate and preview:**
+   ```bash
+   npm run check     # couples.json ↔ content.json consistent?
+   npm run dev       # preview locally (VITE_COUPLE=raj-rani npm run dev)
+   ```
+
+7. **Launch it:** set `"status": "live"` in the `raj-rani` entry and push —
+   CI builds it and FTP-deploys to its subdomain 🎉. Until then it's a local
+   draft and never touches the deploy.
+
+No edits to App.jsx, the resolver, vite.config.js, deploy.yml, or `.env`.
+
+> Tip: set the default couple in `.env` (`VITE_COUPLE=sneha-sarath`) as your
+> local dev target. With no override, the **first entry in `couples.json`**
+> is served. In CI the deploy matrix overrides this per couple.
+
+### Editing an existing couple
+
+Open `src/config/couples/<slug>/content.json` — the couple's names, dates,
+venue, events, FAQ, travel info, share text, and calendar all live there. The
+generic UI labels (Days, Share, section titles…) live once in
+`src/config/base.js` and are shared by every couple (a couple can override any
+of them via `strings`).
 
 ### Adding a Language
 
-1. Add a new block to the `L` dictionary: `const L = { en: {…}, ml: {…}, hi: {…} }`
+1. Add a new block to both `baseL` and each couple's `strings`:
+   `const L = { en: {…}, ml: {…}, hi: {…} }`
 2. Add a button to the `languageSwitch` JSX component
 3. That's it — every string on the site updates automatically
+
+---
+
+## 🗂️ Versioning & lifecycle
+
+As a product with many couples, every couple in the registry carries a
+content **version** and a lifecycle **status**.
+
+| Field | Meaning |
+|---|---|
+| `schemaVersion` (top level) | The platform's current *content shape*. Bump it when you change what a couple's `content.json` looks like (rename/add/move a field). |
+| `version` (per couple) | Which schema this couple's content is on. Must equal `schemaVersion` to build/deploy. |
+| `status` (per couple) | `draft` (local only, not deployed) · `live` (deployed) · `archived` (retired, kept in the registry). |
+
+### Upgrading couples when the schema changes
+
+1. Update `App.jsx` / `base.js` to read the new shape.
+2. Bump `schemaVersion` in `couples.json` (e.g. `1` → `2`).
+3. Add a migration step: `scripts/migrations/1-to-2.mjs` exporting
+   `{ from, to, up(content) }` — a pure JSON object transform
+   (see [`scripts/migrations/README.md`](scripts/migrations/README.md)).
+4. Migrate couples one at a time — `npm run migrate:couple -- <slug>` — or
+   all at once: `npm run migrate:all`.
+5. `npm run check` **fails** on any couple whose `version !== schemaVersion`,
+   so a stale couple can never be built or deployed.
+
+A couple is launched by flipping `"status"` to `"live"` — CI deploys **only
+live couples**, so drafts and archives stay off every subdomain.
 
 ---
 
@@ -143,9 +264,14 @@ Almost everything is configuration-driven. Open [`src/App.jsx`](src/App.jsx) and
 This project ships with a pre-configured CI/CD pipeline.
 
 **Every push to `main` automatically:**
-1. Runs `npm ci`
-2. Runs `npm run build`
-3. Uploads the `dist/` folder to your cPanel subdomain via **FTP**
+1. Reads `couples.json` and builds a **deploy matrix** — one entry per
+   couple with `"status": "live"` (drafts/archives are skipped)
+2. Runs `npm ci`
+3. Builds each couple (`VITE_COUPLE=<slug>`) — with its own `<head>` SEO meta
+4. Uploads each `dist/` folder to its own cPanel subdomain via **FTP**, in parallel
+
+Adding a `live` couple to `couples.json` makes CI deploy it automatically —
+no workflow edits needed.
 
 ### Setup (3 Steps)
 

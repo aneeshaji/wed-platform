@@ -7,7 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check": "node scripts/check.mjs",
+    "add:couple": "node scripts/add-couple.mjs",
+    "migrate:couple": "node scripts/migrate-couple.mjs",
+    "migrate:all": "node scripts/migrate-couple.mjs --all"
   },
   "dependencies": {
     "qrcode.react": "^4.2.0",

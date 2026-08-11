@@ -1,0 +1,136 @@
+/* ------------------------------------------------------------------
+   Shared base for every couple.
+
+   - `baseL`: generic UI labels (EN / ml) that all weddings use. A
+     couple can override ANY key via their `strings` in the couple
+     config — couple values win over these.
+   - `navLinks`: the fixed section navigation (IDs must match sections
+     rendered in App.jsx).
+   - `sparkles` / `petals`: pure decoration, identical for all couples.
+
+   Couple-specific content lives in ./couples/<slug>.js.
+------------------------------------------------------------------ */
+
+export const baseL = {
+  en: {
+    eyebrow: 'You are invited',
+    addToCalendar: 'Add to Calendar',
+    shareAria: 'Share invitation',
+    linkCopied: 'Link copied!',
+    share: 'Share',
+    detailsKicker: 'Details',
+    scroll: 'Scroll down',
+    countdownLabel: 'Counting Down to the Muhurtham',
+    days: 'Days',
+    hours: 'Hours',
+    minutes: 'Mins',
+    seconds: 'Secs',
+    until: 'Until',
+    eventsKicker: 'Celebrations',
+    eventsTitle: 'Events & Ceremonies',
+    storyKicker: 'Our Journey',
+    storyTitle: 'Two Hearts, One Journey',
+    galleryKicker: 'Moments',
+    galleryTitle: 'Photo Gallery',
+    openPhoto: 'View photo',
+    detailsTitle: 'Event Highlights',
+    venueKicker: 'Location',
+    venueTitle: 'The Venue & Directions',
+    mapsOpen: 'Open in Google Maps',
+    copied: 'Copied!',
+    copyAddress: 'Copy Address',
+    scanDirections: 'Scan for directions',
+    scheduleKicker: 'Timeline',
+    scheduleTitle: 'Wedding Schedule',
+    travelKicker: 'Guest Info',
+    travelTitle: 'Travel & Stay',
+    faqKicker: 'Questions',
+    faqTitle: 'Frequently Asked Questions',
+    caricaturesKicker: 'Illustrations',
+    caricaturesTitle: 'Couple Caricature Showcase',
+    shareMailAria: 'Share via email',
+    designedBy: 'Designed by',
+    developedBy: 'Developed by',
+    allRights: 'All rights reserved',
+    backTop: 'Back to top',
+    closeMenu: 'Close menu',
+    openMenu: 'Open menu',
+    closePhoto: 'Close photo',
+  },
+  ml: {
+    eyebrow: 'നിങ്ങളെ ക്ഷണിക്കുന്നു',
+    addToCalendar: 'കലണ്ടറിലേക്ക് ചേർക്കുക',
+    shareAria: 'ക്ഷണക്കത്ത് പങ്കിടുക',
+    linkCopied: 'ലിങ്ക് പകർത്തി!',
+    share: 'പങ്കിടുക',
+    detailsKicker: 'വിവരങ്ങൾ',
+    scroll: 'താഴേക്ക് പോകുക',
+    countdownLabel: 'മുഹൂർത്തത്തിലേക്കുള്ള സമയം',
+    days: 'ദിവസങ്ങൾ',
+    hours: 'മണിക്കൂറുകൾ',
+    minutes: 'മിനിറ്റുകൾ',
+    seconds: 'സെക്കൻഡുകൾ',
+    until: 'ഇനി',
+    eventsKicker: 'ആഘോഷങ്ങൾ',
+    eventsTitle: 'ചടങ്ങുകൾ',
+    storyKicker: 'ഞങ്ങളുടെ യാത്ര',
+    storyTitle: 'രണ്ട് ഹൃദയങ്ങൾ, ഒരു യാത്ര',
+    galleryKicker: 'ചിത്രങ്ങൾ',
+    galleryTitle: 'ഫോട്ടോ ഗ്യാലറി',
+    openPhoto: 'ചിത്രം കാണുക',
+    detailsTitle: 'പ്രധാന വിവരങ്ങൾ',
+    venueKicker: 'വേദി',
+    venueTitle: 'വേദിയും വഴിയും',
+    mapsOpen: 'ഗൂഗിൾ മാപ്പിൽ കാണുക',
+    copied: 'പകർത്തി!',
+    copyAddress: 'വിലാസം പകർത്തുക',
+    scanDirections: 'വഴിയറിയാൻ സ്കാൻ ചെയ്യൂ',
+    scheduleKicker: 'സമയക്രമം',
+    scheduleTitle: 'വിവാഹ ഷെഡ്യൂൾ',
+    travelKicker: 'യാത്രാ വിവരങ്ങൾ',
+    travelTitle: 'യാത്രയും താമസവും',
+    faqKicker: 'സംശയങ്ങൾ',
+    faqTitle: 'ചോദ്യോത്തരം',
+    caricaturesKicker: 'ചിത്രരൂപങ്ങൾ',
+    caricaturesTitle: 'കരിക്കേച്ചർ ഓർമ്മകൾ',
+    shareMailAria: 'ഇമെയിൽ',
+    designedBy: 'രൂപകൽപ്പന',
+    developedBy: 'സാങ്കേതികം',
+    allRights: 'എല്ലാ അവകാശങ്ങളും',
+    backTop: 'മുകളിലേക്ക്',
+    closeMenu: 'അടയ്ക്കുക',
+    openMenu: 'തുറക്കുക',
+    closePhoto: 'ചിത്രം അടയ്ക്കുക',
+  },
+}
+
+export const navLinks = [
+  { href: '#events', en: 'Events', ml: 'ആഘോഷങ്ങൾ' },
+  { href: '#story', en: 'Story', ml: 'കഥ' },
+  { href: '#venue', en: 'Venue', ml: 'വേദി' },
+  { href: '#schedule', en: 'Schedule', ml: 'ഷെഡ്യൂൾ' },
+  { href: '#travel', en: 'Travel', ml: 'യാത്ര' },
+  { href: '#faq', en: 'FAQs', ml: 'ചോദ്യോത്തരം' },
+]
+
+export const sparkles = [
+  { top: '18%', left: '8%', size: 7, dur: '3.6s', delay: '0s' },
+  { top: '30%', left: '90%', size: 5, dur: '4.4s', delay: '0.6s' },
+  { top: '62%', left: '4%', size: 6, dur: '5s', delay: '1.2s' },
+  { top: '78%', left: '92%', size: 8, dur: '4s', delay: '0.3s' },
+  { top: '45%', left: '48%', size: 5, dur: '3.2s', delay: '1.8s' },
+  { top: '12%', left: '70%', size: 6, dur: '4.8s', delay: '0.9s' },
+  { top: '88%', left: '26%', size: 5, dur: '3.8s', delay: '2.2s' },
+  { top: '8%', left: '38%', size: 4, dur: '5.2s', delay: '1.4s' },
+]
+
+export const petals = [
+  { left: '6%', size: 18, pd: '11s', pdelay: '0s', sway: '46px' },
+  { left: '20%', size: 12, pd: '14s', pdelay: '2.4s', sway: '-38px' },
+  { left: '36%', size: 16, pd: '12s', pdelay: '4.1s', sway: '52px' },
+  { left: '52%', size: 13, pd: '15s', pdelay: '1.2s', sway: '-44px' },
+  { left: '66%', size: 17, pd: '10.5s', pdelay: '3.3s', sway: '40px' },
+  { left: '80%', size: 12, pd: '13s', pdelay: '5.2s', sway: '-34px' },
+  { left: '90%', size: 15, pd: '12.5s', pdelay: '0.8s', sway: '48px' },
+  { left: '14%', size: 11, pd: '16s', pdelay: '6s', sway: '36px' },
+]

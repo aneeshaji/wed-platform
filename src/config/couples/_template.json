@@ -1,0 +1,161 @@
+{
+  "icsFilename": "__SLUG__-wedding.ics",
+  "audioSrc": "/audio/background.mp3",
+  "brand": {
+    "name1": "First",
+    "name2": "Second",
+    "initials": "F ✦ S",
+    "brandDate": "01.01.27",
+    "heroImage": "/images/__SLUG__/couple_hero.png",
+    "heroAlt": "First & Second Wedding Portrait"
+  },
+  "weddingTarget": "2027-01-01T10:00:00+05:30",
+  "venueName": "Venue Name",
+  "venueUrl": "https://www.google.com/maps/dir//Venue+Name",
+  "venueAddress": "Street, City, Kerala PINCODE",
+  "venueMapEmbed": "https://www.google.com/maps?q=8.5,76.6&z=17&output=embed",
+  "strings": {
+    "en": {
+      "heroDay": "Friday",
+      "heroDate": "1 January 2027",
+      "heroEvent": "Muhurtham · 10:00 AM – 10:30 AM",
+      "heroLead": "We invite you to witness a beautifully modern celebration of love, blessings, and a future filled with joy.",
+      "marquee": ["First & Second", "1 January 2027", "Venue Name, City", "Join Our Celebration"],
+      "countdownDate": "1 January 2027 · 10:00 AM – 10:30 AM",
+      "storyLede": "Surrounded by family and lifelong friends, we begin our greatest chapter together.",
+      "storyQuote": "Love does not consist in gazing at each other, but in looking outward together in the same direction.",
+      "venueNote": "Located conveniently in City with ample guest parking.",
+      "footerDate": "Friday · 1 January 2027 · Venue Name, City, Kerala",
+      "footerMade": "Crafted with love, for our celebration.",
+      "calendarSummary": "First & Second — Muhurtham",
+      "calendarReceptionSummary": "First & Second — Reception",
+      "shareBody": "You are invited! Join us for the Muhurtham ceremony on Friday, 1 January 2027 between 10:00 AM and 10:30 AM, at Venue Name, City, Kerala.",
+      "shareMailTitle": "First & Second — Wedding Invitation"
+    },
+    "ml": {
+      "heroDay": "വെള്ളി",
+      "heroDate": "1 ജനുവരി 2027",
+      "heroEvent": "മുഹൂർത്തം · 10:00 – 10:30",
+      "heroLead": "സ്നേഹത്തിന്റെയും അനുഗ്രഹത്തിന്റെയും സന്തോഷം നിറഞ്ഞ ആഘോഷത്തിന് നിങ്ങളെ ക്ഷണിക്കുന്നു.",
+      "marquee": ["ഫസ്റ്റ് & സെക്കൻഡ്", "1 ജനുവരി 2027", "വേദി, നഗരം", "ഞങ്ങളുടെ ആഘോഷത്തിൽ പങ്കുചേരൂ"],
+      "countdownDate": "1 ജനുവരി 2027 · രാവിലെ 10.00 – 10.30",
+      "storyLede": "കുടുംബത്തിന്റെയും സുഹൃത്തുക്കളുടെയും സാന്നിധ്യത്തിൽ ഞങ്ങൾ പുതിയൊരു ജീവിതത്തിലേക്ക് കടക്കുന്നു.",
+      "storyQuote": "സ്നേഹം എന്നത് പരസ്പരം നോക്കിയിരിക്കലല്ല, ഒരേ ദിശയിലേക്ക് ഒരുമിച്ച് നോക്കുന്നതാണ്.",
+      "venueNote": "നഗരത്തിൽ സ്ഥിതി ചെയ്യുന്ന വേദി. വിശാലമായ പാർക്കിംഗ് സൗകര്യം ലഭ്യമാണ്.",
+      "footerDate": "01-01-2027 · വേദി · നഗരം",
+      "footerMade": "സ്നേഹത്തോടെ ഞങ്ങൾ നിർമ്മിച്ചത്.",
+      "calendarSummary": "ഫസ്റ്റ് & സെക്കൻഡ് — മുഹൂർത്തം",
+      "calendarReceptionSummary": "ഫസ്റ്റ് & സെക്കൻഡ് — റിസപ്ഷൻ",
+      "shareBody": "01-01-2027 രാവിലെ 10.00 നും 10.30 നും ഇടയ്ക്ക്, വേദി, നഗരം.",
+      "shareMailTitle": "ഫസ്റ്റ് & സെക്കൻഡ് — വിവാഹ ക്ഷണം"
+    }
+  },
+  "highlights": [
+    {
+      "key": "venue",
+      "icon": "mappin",
+      "label": { "en": "Venue", "ml": "വേദി" },
+      "value": "Venue Name",
+      "detail": { "en": "City, Kerala", "ml": "നഗരം, കേരളം" }
+    },
+    {
+      "key": "theme",
+      "icon": "heart",
+      "label": { "en": "Theme", "ml": "ആശയം" },
+      "value": "Thaali kettu",
+      "detail": {
+        "en": "An auspicious moment — the muhurtham marks our hands joined in blessing.",
+        "ml": "ശുഭ മുഹൂർത്തം — കരങ്ങൾ അനുഗ്രഹത്താൽ ചേരുന്ന നിമിഷം."
+      }
+    }
+  ],
+  "schedule": [
+    {
+      "icon": "rings",
+      "time": { "en": "Friday · 10:00 – 10:30", "ml": "വെള്ളി · 10:00 – 10:30" },
+      "title": { "en": "Muhurtham — sacred ceremony", "ml": "മുഹൂർത്തം — ചടങ്ങ്" },
+      "note": {
+        "en": "The vows and blessings are exchanged in a sacred morning ritual, surrounded by family and loved ones.",
+        "ml": "കുടുംബത്തോടൊപ്പമുള്ള ഒരു ചടങ്ങ്."
+      }
+    },
+    {
+      "icon": "glass",
+      "time": { "en": "Thursday · 4:00 PM onwards", "ml": "വ്യാഴം · വൈകുന്നേരം 4 മണി മുതൽ" },
+      "title": { "en": "Reception — celebration", "ml": "റിസപ്ഷൻ — ആഘോഷം" },
+      "note": {
+        "en": "An elegant evening of music, joy and togetherness as we celebrate our wedding weekend. Begins at 4:00 PM.",
+        "ml": "സംഗീതവും സന്തോഷവും നിറഞ്ഞ ഒരു അവിസ്മരണീയ സന്ധ്യ."
+      }
+    }
+  ],
+  "events": [
+    {
+      "key": "muhurtham",
+      "icon": "rings",
+      "title": { "en": "Muhurtham", "ml": "മുഹൂർത്തം" },
+      "date": { "en": "1 January 2027", "ml": "01-01-2027" },
+      "time": { "en": "10:00 – 10:30", "ml": "10:00 – 10:30" },
+      "venue": "Venue Name",
+      "address": "Street, City, Kerala PINCODE"
+    },
+    {
+      "key": "reception",
+      "icon": "glass",
+      "title": { "en": "Reception", "ml": "റിസപ്ഷൻ" },
+      "date": { "en": "31 December 2026", "ml": "31-12-2026" },
+      "time": { "en": "4:00 PM onwards", "ml": "വൈകുന്നേരം 4 മണി മുതൽ" },
+      "venue": "Venue Name",
+      "address": "Street, City, Kerala PINCODE"
+    }
+  ],
+  "faqs": [
+    {
+      "q": { "en": "What time should I arrive?", "ml": "എപ്പോൾ എത്തണം?" },
+      "a": { "en": "Muhurtham begins at 10:00 AM. Please arrive a little early to settle in.", "ml": "10:00-നാണ് മുഹൂർത്തം." }
+    },
+    {
+      "q": { "en": "Are children welcome?", "ml": "കുട്ടികൾ വരാം?" },
+      "a": { "en": "Yes — the celebration is for the whole family and all are welcome.", "ml": "അതെ, എല്ലാവർക്കും സ്വാഗതം." }
+    },
+    {
+      "q": { "en": "Is parking available at the venue?", "ml": "പാർക്കിങ് ഉണ്ടോ?" },
+      "a": { "en": "Yes, ample parking is available at the venue.", "ml": "ഉണ്ട്." }
+    },
+    {
+      "q": { "en": "Can I bring a plus one?", "ml": "ഒരാളെ കൂടി കൊണ്ടുവരാമോ?" },
+      "a": { "en": "Yes, family and guests are welcome to celebrate with us.", "ml": "അതെ, എല്ലാവർക്കും സ്വാഗതം." }
+    }
+  ],
+  "travelData": [
+    {
+      "icon": "plane",
+      "title": { "en": "By air", "ml": "വിമാനം" },
+      "detail": { "en": "Fly into the nearest international airport.", "ml": "അടുത്തുള്ള വിമാനത്താവളം." }
+    },
+    {
+      "icon": "train",
+      "title": { "en": "By train", "ml": "ട്രെയിനിൽ" },
+      "detail": { "en": "The nearest railway station is close to the venue.", "ml": "അടുത്തുള്ള റെയിൽവേ സ്റ്റേഷൻ." }
+    },
+    {
+      "icon": "mappin",
+      "title": { "en": "By road", "ml": "റോഡ് മാർഗം" },
+      "detail": { "en": "The venue is easily reachable by car.", "ml": "കാറിൽ എളുപ്പത്തിൽ എത്താം." }
+    },
+    {
+      "icon": "bed",
+      "title": { "en": "Where to stay", "ml": "താമസം" },
+      "detail": { "en": "Several comfortable stays are available nearby.", "ml": "സമീപത്ത് താമസ സൗകര്യം." }
+    },
+    {
+      "icon": "phone",
+      "title": { "en": "Need help?", "ml": "സഹായം" },
+      "detail": { "en": "For travel, stay, or anything at all, contact the family.", "ml": "കുടുംബത്തെ വിളിക്കുക." }
+    }
+  ],
+  "calendar": [
+    { "uid": "muhurtham", "dtstart": "20270101T100000", "dtend": "20270101T103000", "summaryKey": "calendarSummary" },
+    { "uid": "reception", "dtstart": "20261231T160000", "dtend": "20261231T220000", "summaryKey": "calendarReceptionSummary" }
+  ]
+}

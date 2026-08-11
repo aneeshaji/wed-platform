@@ -1,0 +1,176 @@
+{
+  "icsFilename": "sneha-sarathraj-wedding.ics",
+  "audioSrc": "/audio/background.mp3",
+  "brand": {
+    "name1": "Sneha",
+    "name2": "Sarathraj",
+    "initials": "S ✦ S",
+    "brandDate": "13.09.26",
+    "heroImage": "/images/sneha-sarath/couple_hero.png",
+    "heroAlt": "Sneha & Sarathraj Wedding Portrait"
+  },
+  "weddingTarget": "2026-09-13T11:55:00+05:30",
+  "venueName": "Bhama Auditorium",
+  "venueUrl": "https://www.google.com/maps/dir//Bhama+Auditorium+Mayyanad,+Ammachanmukku,+Koottikada,+Mayyanad,+Kollam,+Kerala+691020/@8.8607411,76.5606201,11.96z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3b05fb5215b0b769:0x435cb23c7801c41f!2m2!1d76.6366936!2d8.8493243?entry=ttu",
+  "venueAddress": "Ammachanmukku, Koottikada, Mayyanad, Kollam, Kerala 691020",
+  "venueMapEmbed": "https://www.google.com/maps?q=8.8493233,76.6366936&z=17&output=embed",
+  "strings": {
+    "en": {
+      "heroDay": "Sunday",
+      "heroDate": "13 September 2026",
+      "heroEvent": "Muhurtham · 11:55 AM – 12:15 PM",
+      "heroLead": "We invite you to witness a beautifully modern celebration of love, blessings, and a future filled with joy.",
+      "marquee": ["Sneha & Sarathraj", "13 September 2026", "Bhama Auditorium, Mayyanad", "Join Our Celebration"],
+      "countdownDate": "13 September 2026 · 11:55 AM – 12:15 PM",
+      "storyLede": "Surrounded by family and lifelong friends, we begin our greatest chapter together.",
+      "storyQuote": "Love does not consist in gazing at each other, but in looking outward together in the same direction.",
+      "venueNote": "Located conveniently at Ammachanmukku, Koottikada, Mayyanad, Kollam with ample guest parking.",
+      "footerDate": "Sunday · 13 September 2026 · Bhama Auditorium, Mayyanad, Kollam, Kerala",
+      "footerMade": "Crafted with love, for our celebration.",
+      "calendarSummary": "Sneha & Sarathraj — Muhurtham",
+      "calendarReceptionSummary": "Sneha & Sarathraj — Reception",
+      "shareBody": "You are invited! Join us for the Muhurtham ceremony on Sunday, 13 September 2026 between 11:55 AM and 12:15 PM, at Bhama Auditorium, Ammachanmukku, Koottikada, Mayyanad, Kollam, Kerala.",
+      "shareMailTitle": "Sneha & Sarathraj — Wedding Invitation"
+    },
+    "ml": {
+      "heroDay": "ഞായറാഴ്ച",
+      "heroDate": "13 സെപ്റ്റംബർ 2026",
+      "heroEvent": "മുഹൂർത്തം · 11:55 – 12:15",
+      "heroLead": "സ്നേഹത്തിന്റെയും അനുഗ്രഹത്തിന്റെയും സന്തോഷം നിറഞ്ഞ ആഘോഷത്തിന് നിങ്ങളെ ക്ഷണിക്കുന്നു.",
+      "marquee": ["സ്നേഹ & ശരത്‌രാജ്", "13 സെപ്റ്റംബർ 2026", "ഭാമാ ഓഡിറ്റോറിയം, മയ്യനാട്", "ഞങ്ങളുടെ ആഘോഷത്തിൽ പങ്കുചേരൂ"],
+      "countdownDate": "13 സെപ്റ്റംബർ 2026 · പകൽ 11.55 – 12.15",
+      "storyLede": "കുടുംബത്തിന്റെയും സുഹൃത്തുക്കളുടെയും സാന്നിധ്യത്തിൽ ഞങ്ങൾ പുതിയൊരു ജീവിതത്തിലേക്ക് കടക്കുന്നു.",
+      "storyQuote": "സ്നേഹം എന്നത് പരസ്പരം നോക്കിയിരിക്കലല്ല, ഒരേ ദിശയിലേക്ക് ഒരുമിച്ച് നോക്കുന്നതാണ്.",
+      "venueNote": "മയ്യനാട്, അമ്മാച്ചൻമുക്കിൽ സ്ഥിതി ചെയ്യുന്ന ഓഡിറ്റോറിയം. വിശാലമായ പാർക്കിംഗ് സൗകര്യം ലഭ്യമാണ്.",
+      "footerDate": "13-09-2026 · ഭാമാ ഓഡിറ്റോറിയം · മയ്യനാട്",
+      "footerMade": "സ്നേഹത്തോടെ ഞങ്ങൾ നിർമ്മിച്ചത്.",
+      "calendarSummary": "സ്നേഹ & ശരത്‌രാജ് — മുഹൂർത്തം",
+      "calendarReceptionSummary": "സ്നേഹ & ശരത്‌രാജ് — റിസപ്ഷൻ",
+      "shareBody": "13-09-2026 പകൽ 11.55 നും 12.15 നും ഇടയ്ക്ക്, ഭാമാ ഓഡിറ്റോറിയം, മയ്യനാട്, കൊല്ലം.",
+      "shareMailTitle": "സ്നേഹ & ശരത്‌രാജ് — വിവാഹ ക്ഷണം"
+    }
+  },
+  "highlights": [
+    {
+      "key": "venue",
+      "icon": "mappin",
+      "label": { "en": "Venue", "ml": "വേദി" },
+      "value": "Bhama Auditorium",
+      "detail": { "en": "Ammachanmukku, Koottikada, Mayyanad, Kollam, Kerala 691020", "ml": "മയ്യനാട്, കൊല്ലം, കേരളം" }
+    },
+    {
+      "key": "theme",
+      "icon": "heart",
+      "label": { "en": "Theme", "ml": "ആശയം" },
+      "value": "Thaali kettu",
+      "detail": {
+        "en": "An auspicious moment — the muhurtham marks our hands joined in blessing.",
+        "ml": "ശുഭ മുഹൂർത്തം — കരങ്ങൾ അനുഗ്രഹത്താൽ ചേരുന്ന നിമിഷം."
+      }
+    }
+  ],
+  "schedule": [
+    {
+      "icon": "rings",
+      "time": { "en": "Sunday · 11:55 – 12:15", "ml": "ഞായർ · 11:55 – 12:15" },
+      "title": { "en": "Muhurtham — sacred ceremony", "ml": "മുഹൂർത്തം — ചടങ്ങ്" },
+      "note": {
+        "en": "The vows and blessings are exchanged in a sacred morning ritual, surrounded by family and loved ones.",
+        "ml": "കുടുംബത്തോടൊപ്പമുള്ള ഒരു ചടങ്ങ്."
+      }
+    },
+    {
+      "icon": "glass",
+      "time": { "en": "Saturday · 4:00 PM onwards", "ml": "ശനി · വൈകുന്നേരം 4 മണി മുതൽ" },
+      "title": { "en": "Reception — celebration", "ml": "റിസപ്ഷൻ — ആഘോഷം" },
+      "note": {
+        "en": "An elegant evening of music, joy and togetherness as we celebrate our wedding weekend. Begins at 4:00 PM.",
+        "ml": "സംഗീതവും സന്തോഷവും നിറഞ്ഞ ഒരു അവിസ്മരണീയ സന്ധ്യ."
+      }
+    }
+  ],
+  "events": [
+    {
+      "key": "muhurtham",
+      "icon": "rings",
+      "title": { "en": "Muhurtham", "ml": "മുഹൂർത്തം" },
+      "date": { "en": "13 September 2026", "ml": "13-09-2026" },
+      "time": { "en": "11:55 – 12:15", "ml": "11:55 – 12:15" },
+      "venue": "Bhama Auditorium",
+      "address": "Ammachanmukku, Koottikada, Mayyanad, Kollam, Kerala 691020"
+    },
+    {
+      "key": "reception",
+      "icon": "glass",
+      "title": { "en": "Reception", "ml": "റിസപ്ഷൻ" },
+      "date": { "en": "12 September 2026", "ml": "12-09-2026" },
+      "time": { "en": "4:00 PM onwards", "ml": "വൈകുന്നേരം 4 മണി മുതൽ" },
+      "venue": "Bhama Auditorium",
+      "address": "Ammachanmukku, Koottikada, Mayyanad, Kollam, Kerala 691020"
+    }
+  ],
+  "faqs": [
+    {
+      "q": { "en": "What time should I arrive?", "ml": "എപ്പോൾ എത്തണം?" },
+      "a": { "en": "Muhurtham begins at 11:55 AM. Please arrive a little early to settle in.", "ml": "11:55-നാണ് മുഹൂർത്തം." }
+    },
+    {
+      "q": { "en": "Are children welcome?", "ml": "കുട്ടികൾ വരാം?" },
+      "a": { "en": "Yes — the celebration is for the whole family and all are welcome.", "ml": "അതെ, എല്ലാവർക്കും സ്വാഗതം." }
+    },
+    {
+      "q": { "en": "Is parking available at the venue?", "ml": "പാർക്കിങ് ഉണ്ടോ?" },
+      "a": { "en": "Yes, ample parking is available at Bhama Auditorium.", "ml": "ഉണ്ട്." }
+    },
+    {
+      "q": { "en": "Can I bring a plus one?", "ml": "ഒരാളെ കൂടി കൊണ്ടുവരാമോ?" },
+      "a": { "en": "Yes, family and guests are welcome to celebrate with us.", "ml": "അതെ, എല്ലാവർക്കും സ്വാഗതം." }
+    }
+  ],
+  "travelData": [
+    {
+      "icon": "plane",
+      "title": { "en": "By air", "ml": "വിമാനം" },
+      "detail": {
+        "en": "Fly into Trivandrum International Airport (TRV), about 50 km away. Cabs take roughly 1–1.5 hours.",
+        "ml": "തിരുവനന്തപുരം വിമാനത്താവളം (TRV), ഏകദേശം 50 കി.മീ."
+      }
+    },
+    {
+      "icon": "train",
+      "title": { "en": "By train", "ml": "ട്രെയിനിൽ" },
+      "detail": {
+        "en": "Kollam Junction railway station is about 9 km from the venue.",
+        "ml": "കൊല്ലം ജംഗ്ഷൻ സ്റ്റേഷൻ, ഏകദേശം 9 കി.മീ."
+      }
+    },
+    {
+      "icon": "mappin",
+      "title": { "en": "By road", "ml": "റോഡ് മാർഗം" },
+      "detail": {
+        "en": "The venue sits near Mayyanad on NH66, easy to reach by car.",
+        "ml": "മയ്യനാട്, NH66 അടുത്ത്."
+      }
+    },
+    {
+      "icon": "bed",
+      "title": { "en": "Where to stay", "ml": "താമസം" },
+      "detail": {
+        "en": "Several comfortable stays are available near Mayyanad and the Ashtamudi backwaters.",
+        "ml": "മയ്യനാട്, അഷ്ടമുടിക്കടുത്ത്."
+      }
+    },
+    {
+      "icon": "phone",
+      "title": { "en": "Need help?", "ml": "സഹായം" },
+      "detail": {
+        "en": "For travel, stay, or anything at all, contact the family: Sreejith N — 70251 82667 or 73566 85094.",
+        "ml": "സ്രീജിത്ത് എൻ — 70251 82667 / 73566 85094."
+      }
+    }
+  ],
+  "calendar": [
+    { "uid": "muhurtham", "dtstart": "20260913T115500", "dtend": "20260913T121500", "summaryKey": "calendarSummary" },
+    { "uid": "reception", "dtstart": "20260912T160000", "dtend": "20260912T220000", "summaryKey": "calendarReceptionSummary" }
+  ]
+}

@@ -25,308 +25,47 @@ import {
   TrainIcon,
 } from './icons'
 import { Diya } from './decor'
-import coupleHeroImg from './assets/couple_hero.png'
+import config from './config'
 import './App.css'
 
 /* ------------------------------------------------------------------
-   Translations — EN (English) / ml (Malayalam).
-   NOTE: ml values were authored best-effort and should be reviewed by
-   a native speaker — edit a single value below and it updates the
-   whole site. Strings without a clean ml value fall back to English.
+   Config — imported per-couple from src/config/ (chosen at build time
+   by VITE_COUPLE). Couple content lives in src/config/couples/<slug>.js,
+   shared UI labels in src/config/base.js. Keep this block read-only.
 ------------------------------------------------------------------ */
-const L = {
-  en: {
-    eyebrow: 'You are invited',
-    heroDay: 'Sunday',
-    heroDate: '13 September 2026',
-    heroEvent: 'Muhurtham · 11:55 AM – 12:15 PM',
-    heroLead: 'We invite you to witness a beautifully modern celebration of love, blessings, and a future filled with joy.',
-    addToCalendar: 'Add to Calendar',
-    shareAria: 'Share invitation',
-    linkCopied: 'Link copied!',
-    share: 'Share',
-    detailsKicker: 'Details',
-    scroll: 'Scroll down',
-    marquee: ['Sneha & Sarathraj', '13 September 2026', 'Bhama Auditorium, Mayyanad', 'Join Our Celebration'],
-    countdownLabel: 'Counting Down to the Muhurtham',
-    days: 'Days',
-    hours: 'Hours',
-    minutes: 'Mins',
-    seconds: 'Secs',
-    until: 'Until',
-    countdownDate: '13 September 2026 · 11:55 AM – 12:15 PM',
-    eventsKicker: 'Celebrations',
-    eventsTitle: 'Events & Ceremonies',
-    storyKicker: 'Our Journey',
-    storyTitle: 'Two Hearts, One Journey',
-    storyLede: 'Surrounded by family and lifelong friends, we begin our greatest chapter together.',
-    storyQuote: 'Love does not consist in gazing at each other, but in looking outward together in the same direction.',
-    galleryKicker: 'Moments',
-    galleryTitle: 'Photo Gallery',
-    openPhoto: 'View photo',
-    detailsTitle: 'Event Highlights',
-    venueKicker: 'Location',
-    venueTitle: 'The Venue & Directions',
-    venueNote: 'Located conveniently at Ammachanmukku, Koottikada, Mayyanad, Kollam with ample guest parking.',
-    mapsOpen: 'Open in Google Maps',
-    copied: 'Copied!',
-    copyAddress: 'Copy Address',
-    scanDirections: 'Scan for directions',
-    scheduleKicker: 'Timeline',
-    scheduleTitle: 'Wedding Schedule',
-    travelKicker: 'Guest Info',
-    travelTitle: 'Travel & Stay',
-    faqKicker: 'Questions',
-    faqTitle: 'Frequently Asked Questions',
-    caricaturesKicker: 'Illustrations',
-    caricaturesTitle: 'Couple Caricature Showcase',
-    footerDate: 'Sunday · 13 September 2026 · Bhama Auditorium, Mayyanad, Kollam, Kerala',
-    footerMade: 'Crafted with love, for our celebration.',
-    shareMailAria: 'Share via email',
-    designedBy: 'Designed by',
-    developedBy: 'Developed by',
-    allRights: 'All rights reserved',
-    backTop: 'Back to top',
-    closeMenu: 'Close menu',
-    openMenu: 'Open menu',
-    closePhoto: 'Close photo',
-    calendarSummary: 'Sneha & Sarathraj — Muhurtham',
-    calendarReceptionSummary: 'Sneha & Sarathraj — Reception',
-    shareBody: 'You are invited! Join us for the Muhurtham ceremony on Sunday, 13 September 2026 between 11:55 AM and 12:15 PM, at Bhama Auditorium, Ammachanmukku, Koottikada, Mayyanad, Kollam, Kerala.',
-    shareMailTitle: 'Sneha & Sarathraj — Wedding Invitation',
-  },
-  ml: {
-    eyebrow: 'നിങ്ങളെ ക്ഷണിക്കുന്നു',
-    heroDay: 'ഞായറാഴ്ച',
-    heroDate: '13 സെപ്റ്റംബർ 2026',
-    heroEvent: 'മുഹൂർത്തം · 11:55 – 12:15',
-    heroLead: 'സ്നേഹത്തിന്റെയും അനുഗ്രഹത്തിന്റെയും സന്തോഷം നിറഞ്ഞ ആഘോഷത്തിന് നിങ്ങളെ ക്ഷണിക്കുന്നു.',
-    addToCalendar: 'കലണ്ടറിലേക്ക് ചേർക്കുക',
-    shareAria: 'ക്ഷണക്കത്ത് പങ്കിടുക',
-    linkCopied: 'ലിങ്ക് പകർത്തി!',
-    share: 'പങ്കിടുക',
-    detailsKicker: 'വിവരങ്ങൾ',
-    scroll: 'താഴേക്ക് പോകുക',
-    marquee: ['സ്നേഹ & ശരത്‌രാജ്', '13 സെപ്റ്റംബർ 2026', 'ഭാമാ ഓഡിറ്റോറിയം, മയ്യനാട്', 'ഞങ്ങളുടെ ആഘോഷത്തിൽ പങ്കുചേരൂ'],
-    countdownLabel: 'മുഹൂർത്തത്തിലേക്കുള്ള സമയം',
-    days: 'ദിവസങ്ങൾ',
-    hours: 'മണിക്കൂറുകൾ',
-    minutes: 'മിനിറ്റുകൾ',
-    seconds: 'സെക്കൻഡുകൾ',
-    until: 'ഇനി',
-    countdownDate: '13 സെപ്റ്റംബർ 2026 · പകൽ 11.55 – 12.15',
-    eventsKicker: 'ആഘോഷങ്ങൾ',
-    eventsTitle: 'ചടങ്ങുകൾ',
-    storyKicker: 'ഞങ്ങളുടെ യാത്ര',
-    storyTitle: 'രണ്ട് ഹൃദയങ്ങൾ, ഒരു യാത്ര',
-    storyLede: 'കുടുംബത്തിന്റെയും സുഹൃത്തുക്കളുടെയും സാന്നിധ്യത്തിൽ ഞങ്ങൾ പുതിയൊരു ജീവിതത്തിലേക്ക് കടക്കുന്നു.',
-    storyQuote: 'സ്നേഹം എന്നത് പരസ്പരം നോക്കിയിരിക്കലല്ല, ഒരേ ദിശയിലേക്ക് ഒരുമിച്ച് നോക്കുന്നതാണ്.',
-    galleryKicker: 'ചിത്രങ്ങൾ',
-    galleryTitle: 'ഫോട്ടോ ഗ്യാലറി',
-    openPhoto: 'ചിത്രം കാണുക',
-    detailsTitle: 'പ്രധാന വിവരങ്ങൾ',
-    venueKicker: 'വേദി',
-    venueTitle: 'വേദിയും വഴിയും',
-    venueNote: 'മയ്യനാട്, അമ്മാച്ചൻമുക്കിൽ സ്ഥിതി ചെയ്യുന്ന ഓഡിറ്റോറിയം. വിശാലമായ പാർക്കിംഗ് സൗകര്യം ലഭ്യമാണ്.',
-    mapsOpen: 'ഗൂഗിൾ മാപ്പിൽ കാണുക',
-    copied: 'പകർത്തി!',
-    copyAddress: 'വിലാസം പകർത്തുക',
-    scanDirections: 'വഴിയറിയാൻ സ്കാൻ ചെയ്യൂ',
-    scheduleKicker: 'സമയക്രമം',
-    scheduleTitle: 'വിവാഹ ഷെഡ്യൂൾ',
-    travelKicker: 'യാത്രാ വിവരങ്ങൾ',
-    travelTitle: 'യാത്രയും താമസവും',
-    faqKicker: 'സംശയങ്ങൾ',
-    faqTitle: 'ചോദ്യോത്തരം',
-    caricaturesKicker: 'ചിത്രരൂപങ്ങൾ',
-    caricaturesTitle: 'കരിക്കേച്ചർ ഓർമ്മകൾ',
-    footerDate: '13-09-2026 · ഭാമാ ഓഡിറ്റോറിയം · മയ്യനാട്',
-    footerMade: 'സ്നേഹത്തോടെ ഞങ്ങൾ നിർമ്മിച്ചത്.',
-    shareMailAria: 'ഇമെയിൽ',
-    designedBy: 'രൂപകൽപ്പന',
-    developedBy: 'സാങ്കേതികം',
-    allRights: 'എല്ലാ അവകാശങ്ങളും',
-    backTop: 'മുകളിലേക്ക്',
-    closeMenu: 'അടയ്ക്കുക',
-    openMenu: 'തുറക്കുക',
-    closePhoto: 'ചിത്രം അടയ്ക്കുക',
-    calendarSummary: 'സ്നേഹ & ശരത്‌രാജ് — മുഹൂർത്തം',
-    calendarReceptionSummary: 'സ്നേഹ & ശരത്‌രാജ് — റിസപ്ഷൻ',
-    shareBody: '13-09-2026 പകൽ 11.55 നും 12.15 നും ഇടയ്ക്ക്, ഭാമാ ഓഡിറ്റോറിയം, മയ്യനാട്, കൊല്ലം.',
-    shareMailTitle: 'സ്നേഹ & ശരത്‌രാജ് — വിവാഹ ക്ഷണം',
-  },
+const {
+  L,
+  navLinks,
+  venueUrl,
+  venueAddress,
+  venueName,
+  venueMapEmbed,
+  highlights,
+  schedule,
+  sparkles,
+  petals,
+  events,
+  faqs,
+  travelData,
+  calendar,
+} = config
+
+const weddingTarget = new Date(config.weddingTarget).getTime()
+const { name1, name2, initials, brandDate, heroImage, heroAlt } = config.brand
+
+/* Map icon string keys (used in the couple config) to icon components. */
+const ICONS = {
+  mappin: MapPinIcon,
+  heart: HeartIcon,
+  rings: RingsIcon,
+  glass: GlassIcon,
+  plane: PlaneIcon,
+  train: TrainIcon,
+  bed: BedIcon,
+  phone: PhoneIcon,
 }
 
-/* MARKER_X7 */
-const navLinks = [
-  { href: '#events', en: 'Events', ml: 'ആഘോഷങ്ങൾ' },
-  { href: '#story', en: 'Story', ml: 'കഥ' },
-  { href: '#venue', en: 'Venue', ml: 'വേദി' },
-  { href: '#schedule', en: 'Schedule', ml: 'ഷെഡ്യൂൾ' },
-  { href: '#travel', en: 'Travel', ml: 'യാത്ര' },
-  { href: '#faq', en: 'FAQs', ml: 'ചോദ്യോത്തരം' },
-]
 
-
-/* ---------------- Content config ---------------- */
-
-const venueUrl =
-  'https://www.google.com/maps/dir//Bhama+Auditorium+Mayyanad,+Ammachanmukku,+Koottikada,+Mayyanad,+Kollam,+Kerala+691020/@8.8607411,76.5606201,11.96z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3b05fb5215b0b769:0x435cb23c7801c41f!2m2!1d76.6366936!2d8.8493243?entry=ttu'
-
-const venueAddress = 'Ammachanmukku, Koottikada, Mayyanad, Kollam, Kerala 691020'
-
-const highlights = [
-  {
-    key: 'venue',
-    label: { en: 'Venue', ml: 'വേദി' },
-    value: 'Bhama Auditorium',
-    detail: { en: venueAddress, ml: 'മയ്യനാട്, കൊല്ലം, കേരളം' },
-    icon: MapPinIcon,
-  },
-  {
-    key: 'theme',
-    label: { en: 'Theme', ml: 'ആശയം' },
-    value: 'Thaali kettu',
-    detail: {
-      en: 'An auspicious moment — the muhurtham marks our hands joined in blessing.',
-      ml: 'ശുഭ മുഹൂർത്തം — കരങ്ങൾ അനുഗ്രഹത്താൽ ചേരുന്ന നിമിഷം.',
-    },
-    icon: HeartIcon,
-  },
-]
-
-/* Timeline — the two real events */
-const schedule = [
-  {
-    icon: RingsIcon,
-    time: { en: 'Sunday · 11:55 – 12:15', ml: 'ഞായർ · 11:55 – 12:15' },
-    title: { en: 'Muhurtham — sacred ceremony', ml: 'മുഹൂർത്തം — ചടങ്ങ്' },
-    note: {
-      en: 'The vows and blessings are exchanged in a sacred morning ritual, surrounded by family and loved ones.',
-      ml: 'കുടുംബത്തോടൊപ്പമുള്ള ഒരു ചടങ്ങ്.',
-    },
-  },
-  {
-    icon: GlassIcon,
-    time: { en: 'Saturday · 4:00 PM onwards', ml: 'ശനി · വൈകുന്നേരം 4 മണി മുതൽ' },
-    title: { en: 'Reception — celebration', ml: 'റിസപ്ഷൻ — ആഘോഷം' },
-    note: {
-      en: 'An elegant evening of music, joy and togetherness as we celebrate our wedding weekend. Begins at 4:00 PM.',
-      ml: 'സംഗീതവും സന്തോഷവും നിറഞ്ഞ ഒരു അവിസ്മരണീയ സന്ധ്യ.',
-    },
-  },
-]
-
-const sparkles = [
-  { top: '18%', left: '8%', size: 7, dur: '3.6s', delay: '0s' },
-  { top: '30%', left: '90%', size: 5, dur: '4.4s', delay: '0.6s' },
-  { top: '62%', left: '4%', size: 6, dur: '5s', delay: '1.2s' },
-  { top: '78%', left: '92%', size: 8, dur: '4s', delay: '0.3s' },
-  { top: '45%', left: '48%', size: 5, dur: '3.2s', delay: '1.8s' },
-  { top: '12%', left: '70%', size: 6, dur: '4.8s', delay: '0.9s' },
-  { top: '88%', left: '26%', size: 5, dur: '3.8s', delay: '2.2s' },
-  { top: '8%', left: '38%', size: 4, dur: '5.2s', delay: '1.4s' },
-]
-
-const petals = [
-  { left: '6%', size: 18, pd: '11s', pdelay: '0s', sway: '46px' },
-  { left: '20%', size: 12, pd: '14s', pdelay: '2.4s', sway: '-38px' },
-  { left: '36%', size: 16, pd: '12s', pdelay: '4.1s', sway: '52px' },
-  { left: '52%', size: 13, pd: '15s', pdelay: '1.2s', sway: '-44px' },
-  { left: '66%', size: 17, pd: '10.5s', pdelay: '3.3s', sway: '40px' },
-  { left: '80%', size: 12, pd: '13s', pdelay: '5.2s', sway: '-34px' },
-  { left: '90%', size: 15, pd: '12.5s', pdelay: '0.8s', sway: '48px' },
-  { left: '14%', size: 11, pd: '16s', pdelay: '6s', sway: '36px' },
-]
-
-
-
-const weddingTarget = new Date('2026-09-13T11:55:00+05:30').getTime()
-
-const events = [
-  {
-    key: 'muhurtham',
-    title: { en: 'Muhurtham', ml: 'മുഹൂർത്തം' },
-    date: { en: '13 September 2026', ml: '13-09-2026' },
-    time: { en: '11:55 – 12:15', ml: '11:55 – 12:15' },
-    venue: 'Bhama Auditorium',
-    address: venueAddress,
-    icon: RingsIcon,
-  },
-  {
-    key: 'reception',
-    title: { en: 'Reception', ml: 'റിസപ്ഷൻ' },
-    date: { en: '12 September 2026', ml: '12-09-2026' },
-    time: { en: '4:00 PM onwards', ml: 'വൈകുന്നേരം 4 മണി മുതൽ' },
-    venue: 'Bhama Auditorium',
-    address: venueAddress,
-    icon: GlassIcon,
-  },
-]
-
-
-
-const faqs = [
-  {
-    q: { en: 'What time should I arrive?', ml: 'എപ്പോൾ എത്തണം?' },
-    a: { en: 'Muhurtham begins at 11:55 AM. Please arrive a little early to settle in.', ml: '11:55-നാണ് മുഹൂർത്തം.' },
-  },
-  {
-    q: { en: 'Are children welcome?', ml: 'കുട്ടികൾ വരാം?' },
-    a: { en: 'Yes — the celebration is for the whole family and all are welcome.', ml: 'അതെ, എല്ലാവർക്കും സ്വാഗതം.' },
-  },
-  {
-    q: { en: 'Is parking available at the venue?', ml: 'പാർക്കിങ് ഉണ്ടോ?' },
-    a: { en: 'Yes, ample parking is available at Bhama Auditorium.', ml: 'ഉണ്ട്.' },
-  },
-  {
-    q: { en: 'Can I bring a plus one?', ml: 'ഒരാളെ കൂടി കൊണ്ടുവരാമോ?' },
-    a: { en: 'Yes, family and guests are welcome to celebrate with us.', ml: 'അതെ, എല്ലാവർക്കും സ്വാഗതം.' },
-  },
-]
-
-const travelData = [
-  {
-    icon: PlaneIcon,
-    title: { en: 'By air', ml: 'വിമാനം' },
-    detail: {
-      en: 'Fly into Trivandrum International Airport (TRV), about 50 km away. Cabs take roughly 1–1.5 hours.',
-      ml: 'തിരുവനന്തപുരം വിമാനത്താവളം (TRV), ഏകദേശം 50 കി.മീ.',
-    },
-  },
-  {
-    icon: TrainIcon,
-    title: { en: 'By train', ml: 'ട്രെയിനിൽ' },
-    detail: {
-      en: 'Kollam Junction railway station is about 9 km from the venue.',
-      ml: 'കൊല്ലം ജംഗ്ഷൻ സ്റ്റേഷൻ, ഏകദേശം 9 കി.മീ.',
-    },
-  },
-  {
-    icon: MapPinIcon,
-    title: { en: 'By road', ml: 'റോഡ് മാർഗം' },
-    detail: {
-      en: 'The venue sits near Mayyanad on NH66, easy to reach by car.',
-      ml: 'മയ്യനാട്, NH66 അടുത്ത്.',
-    },
-  },
-  {
-    icon: BedIcon,
-    title: { en: 'Where to stay', ml: 'താമസം' },
-    detail: {
-      en: 'Several comfortable stays are available near Mayyanad and the Ashtamudi backwaters.',
-      ml: 'മയ്യനാട്, അഷ്ടമുടിക്കടുത്ത്.',
-    },
-  },
-  {
-    icon: PhoneIcon,
-    title: { en: 'Need help?', ml: 'സഹായം' },
-    detail: {
-      en: 'For travel, stay, or anything at all, contact the family: Sreejith N — 70251 82667 or 73566 85094.',
-      ml: 'സ്രീജിത്ത് എൻ — 70251 82667 / 73566 85094.',
-    },
-  },
-]
 
 /* ---------------- Small helpers ---------------- */
 
@@ -558,29 +297,23 @@ function App() {
       'BEGIN:VCALENDAR',
       'VERSION:2.0',
       'PRODID:-//FrameZ Labs//Wedding Invite//EN',
-      'BEGIN:VEVENT',
-      `UID:${stamp}-muhurtham@framezlabs.store`,
-      `DTSTAMP:${stamp}`,
-      'DTSTART;TZID=Asia/Kolkata:20260913T115500',
-      'DTEND;TZID=Asia/Kolkata:20260913T121500',
-      `SUMMARY:${T.calendarSummary}`,
-      `LOCATION:${venueAddress}`,
-      'END:VEVENT',
-      'BEGIN:VEVENT',
-      `UID:${stamp}-reception@framezlabs.store`,
-      `DTSTAMP:${stamp}`,
-      'DTSTART;TZID=Asia/Kolkata:20260912T160000',
-      'DTEND;TZID=Asia/Kolkata:20260912T220000',
-      `SUMMARY:${T.calendarReceptionSummary}`,
-      `LOCATION:${venueAddress}`,
-      'END:VEVENT',
+      ...calendar.map((ev) => [
+        'BEGIN:VEVENT',
+        `UID:${stamp}-${ev.uid}@framezlabs.store`,
+        `DTSTAMP:${stamp}`,
+        `DTSTART;TZID=Asia/Kolkata:${ev.dtstart}`,
+        `DTEND;TZID=Asia/Kolkata:${ev.dtend}`,
+        `SUMMARY:${T[ev.summaryKey]}`,
+        `LOCATION:${venueAddress}`,
+        'END:VEVENT',
+      ]).flat(),
       'END:VCALENDAR',
     ].join('\r\n')
     const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' })
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
-    a.download = 'sneha-sarathraj-wedding.ics'
+    a.download = config.icsFilename
     document.body.appendChild(a)
     a.click()
     a.remove()
@@ -641,8 +374,8 @@ function App() {
 
       <header className={`topbar${scrolled ? ' topbar--scrolled' : ''}`}>
         <a className="brand" href="#top" aria-label={T.shareMailTitle}>
-          <span className="brand-mark">S ✦ S</span>
-          <span className="brand-date">13.09.26</span>
+          <span className="brand-mark">{initials}</span>
+          <span className="brand-date">{brandDate}</span>
         </a>
         <nav className="topnav" aria-label="Page navigation">
           {navLinks.map((link) => (
@@ -700,9 +433,9 @@ function App() {
               <SparklesIcon size={14} className="eyebrow-icon" /> {T.eyebrow}
             </p>
             <h1 className="hero-title">
-              <span className="word">{splitWord('Sneha')}</span>
+              <span className="word">{splitWord(name1)}</span>
               <em className="amp">&amp;</em>
-              <span className="word">{splitWord('Sarathraj')}</span>
+              <span className="word">{splitWord(name2)}</span>
             </h1>
             <p className="hero-date">
               <span>{T.heroDay}</span>
@@ -747,18 +480,18 @@ function App() {
               <div className="medallion-ring" aria-hidden="true" />
               <div className="medallion-caricature-frame">
                 <img
-                  src={coupleHeroImg}
-                  alt="Sneha &amp; Sarathraj Wedding Portrait"
+                  src={heroImage}
+                  alt={heroAlt}
                   className="caricature-hero-img"
                 />
               </div>
               <div className="medallion-badge">
-                S ✦ S
+                {initials}
               </div>
             </div>
             <div className="float-chip chip--venue">
               {T.detailsKicker}
-              <strong>Bhama Auditorium</strong>
+              <strong>{venueName}</strong>
             </div>
             <div className="float-chip chip--date">
               <CalendarIcon size={12} /> {T.heroDate}
@@ -816,7 +549,7 @@ function App() {
           </div>
           <div className="events-grid" data-reveal>
             {events.map((ev) => {
-              const ItemIcon = ev.icon
+              const ItemIcon = ICONS[ev.icon]
               return (
                 <article className="event-card" key={ev.key}>
                   <span className="event-icon" aria-hidden="true">
@@ -873,7 +606,7 @@ function App() {
           </div>
           <div className="detail-rows">
             {highlights.map((item, i) => {
-              const ItemIcon = item.icon
+              const ItemIcon = ICONS[item.icon]
               return (
                 <div
                   className="detail-row"
@@ -912,7 +645,7 @@ function App() {
                 <span className="venue-pin-ring" />
                 <MapPinIcon size={42} className="venue-pin-icon" />
               </div>
-              <h3>Bhama Auditorium</h3>
+              <h3>{venueName}</h3>
               <p className="venue-address">{venueAddress}</p>
               <p className="venue-note">{T.venueNote}</p>
               <div className="venue-actions">
@@ -944,8 +677,8 @@ function App() {
           </div>
           <div className="venue-map" data-reveal>
             <iframe
-              title="Bhama Auditorium — location on Google Maps"
-              src="https://www.google.com/maps?q=8.8493233,76.6366936&z=17&output=embed"
+              title={`${venueName} — location on Google Maps`}
+              src={venueMapEmbed}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen
@@ -963,7 +696,7 @@ function App() {
           </div>
           <ol className="timeline" data-reveal>
             {schedule.map((item, i) => {
-              const ItemIcon = item.icon
+              const ItemIcon = ICONS[item.icon]
               return (
                 <li
                   className="timeline-item"
@@ -998,7 +731,7 @@ function App() {
           </div>
           <div className="travel-grid" data-reveal>
             {travelData.map((item) => {
-              const ItemIcon = item.icon
+              const ItemIcon = ICONS[item.icon]
               return (
                 <div className="travel-card" key={item.title.en}>
                   <span className="travel-icon" aria-hidden="true">
@@ -1045,7 +778,7 @@ function App() {
       </main>
 
       <footer className="site-footer">
-        <div className="footer-monogram gradient-text">S ✦ S</div>
+        <div className="footer-monogram gradient-text">{initials}</div>
         <p>{T.footerDate}</p>
         <p>{T.footerMade}</p>
         <div className="footer-social">
@@ -1112,7 +845,7 @@ function App() {
       </button>
 
       {/* ── Floating music player ── */}
-      <audio ref={audioRef} src="/audio/background.mp3" loop autoPlay playsInline preload="auto" />
+      <audio ref={audioRef} src={config.audioSrc} loop autoPlay playsInline preload="auto" />
       <button
         className={`music-btn${musicPlaying ? ' music-btn--playing' : ''}`}
         type="button"
