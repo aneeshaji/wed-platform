@@ -59,6 +59,37 @@ function resolveActiveCouple(env) {
   return couple || manifest.couples[0]
 }
 
+/** Parse the active couple's content.json, or null if unavailable. */
+function readContent(env) {
+  const slug = resolveActiveCouple(env)?.slug
+  const file = new URL(`./src/config/couples/${slug}/content.json`, import.meta.url)
+  if (!existsSync(file)) return null
+  try {
+    return JSON.parse(readFileSync(file, 'utf8'))
+  } catch {
+    return null
+  }
+}
+
+/**
+ * Renders a couple's per-couple font theme from content.json `theme.fonts`
+ * — a Google Fonts <link> plus :root CSS-variable overrides (--display,
+ * --serif, --sans). Couples without `theme` inject nothing and keep the
+ * shared defaults in index.css. The Malayalam fallbacks always stay.
+ */
+function renderTheme(fonts) {
+  if (!fonts?.url) return ''
+  const serifStack = (f) => `'${f}', 'Noto Serif Malayalam', Georgia, serif`
+  const sansStack = (f) => `'${f}', 'Noto Sans Malayalam', system-ui, sans-serif`
+  const style = `:root{font-family:${sansStack(fonts.sans)};--display:${serifStack(fonts.display)};--serif:${serifStack(fonts.serif)};--sans:${sansStack(fonts.sans)}}`
+  return [
+    `    <link rel="preconnect" href="https://fonts.googleapis.com" />`,
+    `    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />`,
+    `    <link href="${esc(fonts.url)}" rel="stylesheet" />`,
+    `    <style>${style}</style>`,
+  ].join('\n')
+}
+
 /**
  * Injects the active couple's meta into index.html at build time.
  * Reads `VITE_COUPLE` from the resolved env (shell > .env); defaults to
@@ -97,6 +128,10 @@ function coupleData(env) {
         )
       }
       return `export default ${readFileSync(file, 'utf8')}`
+    },
+    transformIndexHtml(html) {
+      const theme = renderTheme(readContent(env)?.theme?.fonts)
+      return theme ? html.replace('</head>', `${theme}\n  </head>`) : html
     },
   }
 }

@@ -53,6 +53,7 @@ lifecycle" section of the repo README.
 |---|---|---|
 | `icsFilename` | string | Filename guests get when they download the calendar invite |
 | `audioSrc` | string | Background-music URL (`/audio/…`). Shared track by default |
+| `theme.fonts` | object (optional) | Per-couple font theme: `display` / `serif` / `sans` family names + a Google Fonts `url`. Omit to keep the shared defaults. Injected into `<head>` at build time; other couples are unaffected. |
 | `brand.name1` / `name2` | string | Names rendered letter-by-letter in the hero |
 | `brand.initials` | string | Monogram (brand mark, badge, footer) |
 | `brand.brandDate` | string | Short date in the header (`13.09.26`) |
